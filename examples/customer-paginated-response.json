@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "firstName": "Fraser",
+      "lastName": "Brendand",
+      "address": "1 Charles Street, Westmead, NSW, 2145"
+    },
+    {
+      "firstName": "Raymond",
+      "lastName": "Johnson",
+      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
+    }
+  ],
+  "totalElements": 2
+}

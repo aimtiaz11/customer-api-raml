@@ -2,28 +2,57 @@
 title: customer-api-raml/{version}
 version: v1
 baseUri: http://api.samplehost.com
-types:
-  TestType:
-    type: object
-    properties:
-      id: number
-      optional?: string
-      expanded:
-        type: object
-        properties:
-          count: number
-/customers:
+mediaType: application/json
 
-  get:
-    description: Retrieve a paginated list of customers
-    responses:
-      200:
-        body:
-          application/json:
+## TODO: Refactor these into resourceType folder
+resourceTypes:
+  collection:
+    description: A collection of <<resourcePathName>> in the system
+    get:
+      responses:
+        200:
+          body:
             example: |
-              {
-                "message" : "Hello World"
-              }
+              <<exampleCollection>>
+    put:
+      description: |
+        Update an existing resource
+      body:
+        application/json:
+      responses:
+        204:
+          description: |
+            Succesfully updated the resource
+    post:
+      description: |
+        Create a new resource
+      body:
+        application/json: object
+        example: <<exampleCreateResource>>
+      responses:
+        201:
+          description: |
+            Succesfully created a new resource
+          headers:
+            Location:
+              description: |
+                Location of the newly created resource
+              type: string
+              required: false
+    delete:
+      description: |
+        Delete resource
+      responses:
+        204:
+          description: |
+            Succesfully deleted resource
+
+
+
+
+
+/customers:
+  type:  { collection: {exampleCollection : !include examples/customer-paginated-response.json, exampleCreateResource : !include examples/customer.json } }
   /search:
     get:
       description: |
