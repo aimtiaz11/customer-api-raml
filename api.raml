@@ -1,5 +1,5 @@
 #%RAML 1.0
-title: customer-api-raml
+title: customer-api-raml/{version}
 version: v1
 baseUri: http://api.samplehost.com
 types:
@@ -12,8 +12,10 @@ types:
         type: object
         properties:
           count: number
-/helloWorld:
+/customers:
+
   get:
+    description: Retrieve a paginated list of customers
     responses:
       200:
         body:
@@ -22,3 +24,21 @@ types:
               {
                 "message" : "Hello World"
               }
+  /search:
+    get:
+      description: |
+        Search for customers by first name, last name or address
+      queryParameters:
+        firstName:
+          description: First name of customer
+          type: string
+        lastName:
+          description: Last name of customer
+          type: string
+        address:
+          description: Address
+          type: string
+      responses:
+        200:
+          description: |
+            Paginated list of customers that match search term
