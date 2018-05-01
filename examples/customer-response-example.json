@@ -1,0 +1,11 @@
+{
+  "customerId": 588992,
+  "firstName": "Fraser",
+  "lastName": "Brendand",
+  "address": "1 Charles Street, Westmead, NSW, 2145",
+  "_link": {
+    "rel": "self",
+    "url": "http://api.samplehost.com/api/v1/customers/58892",
+    "method": "GET"
+  }
+}

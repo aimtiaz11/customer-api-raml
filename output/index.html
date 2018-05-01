@@ -1,4 +1,4 @@
-<!DOCTYPE HTML><html><head><title>customer-api-raml/{version} API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 6.6.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+<!DOCTYPE HTML><html><head><title>customer-api-raml API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 6.6.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
       $(document).ready(function() {
         $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
           hljs.highlightBlock(block);
@@ -166,25 +166,145 @@
       .resource-modal li > ul {
         margin-bottom: 1em;
       }
-    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>customer-api-raml/{version} API documentation <small>version v1</small></h1><p>http://api.samplehost.com</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="customers" class="panel-title">/customers</h3></div><div class="panel-body"><div class="top-resource-description"><p>A collection of customers in the system</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers"><span class="parent"></span>/customers</a> <span class="methods"><a href="#customers_get"><span class="badge badge_get">get</span></a> <a href="#customers_put"><span class="badge badge_put">put</span></a> <a href="#customers_post"><span class="badge badge_post">post</span></a> <a href="#customers_delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_customers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update an existing resource</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new resource</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete resource</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#customers_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>customer-api-raml API documentation <small>version v1</small></h1><p>https://api.samplehost.com/api/{version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="customers" class="panel-title">/customers</h3></div><div class="panel-body"><div class="top-resource-description"><p>APIs for collection of Customer resource</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers"><span class="parent"></span>/customers</a> <span class="methods"><a href="#customers_get"><span class="badge badge_get">get</span></a> <a href="#customers_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_customers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve a paginated list of customers</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a paginated list of customers</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_get_request"><h3>Query Parameters</h3><ul><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "pageSize": 3,
+  "pageNo": 0,
+  "totalPages": 224,
+  "first": true,
+  "last": false,
+  "totalElements": 1118,
   "data": [
     {
+      "customerId": 588992,
       "firstName": "Fraser",
       "lastName": "Brendand",
-      "address": "1 Charles Street, Westmead, NSW, 2145"
+      "address": "1 Charles Street, Westmead, NSW, 2145",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/58588992892",
+        "method": "GET"
+      }
     },
     {
+      "customerId": 588294,
       "firstName": "Raymond",
       "lastName": "Johnson",
-      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
+      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/588294",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 588214,
+      "firstName": "Albert",
+      "lastName": "Steve",
+      "address": "4/5 Chestnut Place, Burwood, NSW, 2245",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/588214",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 182842,
+      "firstName": "Albert",
+      "lastName": "Steve",
+      "address": "1 Delhi Road, North Ryde, NSW, 2312",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/182842",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 18284,
+      "firstName": "Amanda",
+      "lastName": "Bell",
+      "address": "9 Mountain Street, Wyong, NSW, 2411",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/18284",
+        "method": "GET"
+      }
     }
-  ],
-  "totalElements": 2
+  ]
 }
 
-</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing resource</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_put_request" data-toggle="tab">Request</a></li><li><a href="#customers_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_put_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p></div><div class="tab-pane" id="customers_put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Succesfully updated the resource</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new resource</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Media type</strong>: example</p><p><strong>Type</strong>:</p><pre><code>{
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new customer</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Media type</strong>: example</p><p><strong>Type</strong>:</p><pre><code>{
   "firstName": "Fraser",
   "lastName": "Brendand",
   "address": "1 Charles Street, Westmead, NSW, 2145"
 }
-</code></pre></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new resource</p><h3>Headers</h3><ul><li><strong>Location</strong>: <em>(string)</em><p>Location of the newly created resource</p></li></ul></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete resource</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Succesfully deleted resource</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers_search"><span class="parent">/customers</span>/search</a> <span class="methods"><a href="#customers_search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_customers_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Search for customers by first name, last name or address</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/customers</span>/search</h4></div><div class="modal-body"><div class="alert alert-info"><p>Search for customers by first name, last name or address</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_search_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_search_get_request"><h3>Query Parameters</h3><ul><li><strong>firstName</strong>: <em>required (string)</em><p>First name of customer</p></li><li><strong>lastName</strong>: <em>required (string)</em><p>Last name of customer</p></li><li><strong>address</strong>: <em>required (string)</em><p>Address</p></li></ul></div><div class="tab-pane" id="customers_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Paginated list of customers that match search term</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#customers">/customers</a></li></ul></div></div></div></div></body></html>
+</code></pre></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new customer</p><h3>Headers</h3><ul><li><strong>Content-Location</strong>: <em>(string)</em><p>Location of the newly created customer</p></li></ul></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get</span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put</span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>All operations on a single customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve customer denoted by the identifier</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve customer denoted by the identifier</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Succesfully retrieved resource</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Media type</strong>: example</p><p><strong>Type</strong>:</p><pre><code>{
+  "firstName": "Fraser",
+  "lastName": "Brendand",
+  "address": "1 Charles Street, Westmead, NSW, 2145"
+}
+</code></pre></div><div class="tab-pane" id="customers__customerid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Succesfully updated the resource</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an existing customer</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__delete_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__delete_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Succesfully deleted resource</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers_search"><span class="parent">/customers</span>/search</a> <span class="methods"><a href="#customers_search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_customers_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Search for customers by first name, last name or address</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/customers</span>/search</h4></div><div class="modal-body"><div class="alert alert-info"><p>Search for customers by first name, last name or address</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_search_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_search_get_request"><h3>Query Parameters</h3><ul><li><strong>firstName</strong>: <em>(string)</em><p>First name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>John</code></pre></div></li><li><strong>lastName</strong>: <em>(string)</em><p>Last name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Smith</code></pre></div></li><li><strong>address</strong>: <em>(string)</em><p>Add whole or part of the address to retrieve matching customers. This could be suburb, postcode or state.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Wyong, Mountain%20Street, 2145</code></pre></div></li><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Paginated list of customers that match search term</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>:</p><pre><code>{
+  "pageSize": 3,
+  "pageNo": 0,
+  "totalPages": 224,
+  "first": true,
+  "last": false,
+  "totalElements": 1118,
+  "data": [
+    {
+      "customerId": 588992,
+      "firstName": "Fraser",
+      "lastName": "Brendand",
+      "address": "1 Charles Street, Westmead, NSW, 2145",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/58588992892",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 588294,
+      "firstName": "Raymond",
+      "lastName": "Johnson",
+      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/588294",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 588214,
+      "firstName": "Albert",
+      "lastName": "Steve",
+      "address": "4/5 Chestnut Place, Burwood, NSW, 2245",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/588214",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 182842,
+      "firstName": "Albert",
+      "lastName": "Steve",
+      "address": "1 Delhi Road, North Ryde, NSW, 2312",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/182842",
+        "method": "GET"
+      }
+    },
+    {
+      "customerId": 18284,
+      "firstName": "Amanda",
+      "lastName": "Bell",
+      "address": "9 Mountain Street, Wyong, NSW, 2411",
+      "_link": {
+        "rel": "self",
+        "url": "http://api.samplehost.com/api/v1/customers/18284",
+        "method": "GET"
+      }
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#customers">/customers</a></li></ul></div></div></div></div></body></html>

@@ -1,47 +1,91 @@
 #%RAML 1.0
-title: customer-api-raml/{version}
 version: v1
-baseUri: http://api.samplehost.com
+title: customer-api-raml
+protocols: [HTTPS]
+baseUri: https://api.samplehost.com/api/{version}
 mediaType: application/json
+
+## TODO: Refactor these into traits
+traits:
+  pageable:
+    description: Trait for paginated requests, setting the page number and/or size parameters
+    queryParameters:
+      pageNo:
+        description: The page number to fetch
+        type: number
+        required: false
+        default: 0
+        example: 5
+      pageSize:
+        description: The maximum number of records to fetch per page
+        type: number
+        required: false
+        default: 100
+        example: 5
+  sortable:
+    description: Trait for sortable requests, setting the sorting field and order
+    queryParameters:
+      sortBy:
+        description: |
+          List of fields to sort by (comma separated). For example: #TODO: add example
+        type: string
+        required: false
+        example: -firstName,lastName
+
+
+
+
+
 
 ## TODO: Refactor these into resourceType folder
 resourceTypes:
   collection:
-    description: A collection of <<resourcePathName>> in the system
+    usage: Resource type for API operations on collection of resources
+    description: A collection of <<resourcePathName>> in the system. Due to the high volume of data that can be retrieved, the response is paginated.
+
     get:
+      description: Retrieve a paginated list of <<resourcePathName | !pluralize>>
       responses:
         200:
           body:
             example: |
-              <<exampleCollection>>
+              <<examplePaginatedResponse>>
+    post:
+      description: Create a new <<resourcePathName | !singularize>>
+      body:
+        application/json: object
+        example: <<createResourceExample>>
+      responses:
+        201:
+          description: Succesfully created a new <<resourcePathName | !singularize>>
+          headers:
+            Content-Location:
+              description: Location of the newly created <<resourcePathName | !singularize>>
+              type: string
+              required: false
+
+  individual:
+    description: Resourcce type for API operations on individual resource
+    get:
+      description: |
+        Retrieve <<resourcePathName | !singularize>> denoted by the identifier
+      responses:
+        200:
+          description: |
+            Succesfully retrieved resource
     put:
       description: |
-        Update an existing resource
+        Update an existing  <<resourcePathName | !singularize>>
       body:
-        application/json:
+        application/json: object
+        example: <<exampleUpdateResourceBody>>
       responses:
         204:
           description: |
             Succesfully updated the resource
-    post:
-      description: |
-        Create a new resource
-      body:
-        application/json: object
-        example: <<exampleCreateResource>>
-      responses:
-        201:
-          description: |
-            Succesfully created a new resource
-          headers:
-            Location:
-              description: |
-                Location of the newly created resource
-              type: string
-              required: false
     delete:
       description: |
-        Delete resource
+        Delete an existing <<resourcePathName | !singularize>>
       responses:
         204:
           description: |
@@ -49,25 +93,43 @@ resourceTypes:
 
 
 
-
+## API Definitions
 
 /customers:
-  type:  { collection: {exampleCollection : !include examples/customer-paginated-response.json, exampleCreateResource : !include examples/customer.json } }
+  description: APIs for collection of Customer resource
+  type:  { collection: {examplePaginatedResponse : !include examples/customer-response-paginated-example.json, createResourceExample : !include examples/customer-request-example.json } }
+
+  get:
+    is: [pageable,sortable]
+
+  /{customerId}:
+    type:  { individual: {exampleUpdateResourceBody : !include examples/customer-request-example.json} }
+    description: All operations on a single customer resource
+
   /search:
     get:
+      is:  [pageable,sortable]
       description: |
         Search for customers by first name, last name or address
       queryParameters:
         firstName:
+          required: false
           description: First name of customer
           type: string
+          example: John
         lastName:
+          required: false
           description: Last name of customer
           type: string
+          example: Smith
         address:
-          description: Address
+          required: false
+          description: Add whole or part of the address to retrieve matching customers. This could be suburb, postcode or state.
           type: string
+          example: Wyong, Mountain%20Street, 2145
+
       responses:
         200:
           description: |
             Paginated list of customers that match search term
+          body: !include examples/customer-response-paginated-example.json
