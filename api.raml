@@ -1,11 +1,14 @@
 #%RAML 1.0
-version: v1
 title: customer-api-raml
+version: v1
 protocols: [HTTPS]
 baseUri: https://api.samplehost.com/api/{version}
 mediaType: application/json
 
-## TODO: Refactor these into traits
+###################
+## Traits
+###################
+
 traits:
   pageable:
     description: Trait for paginated requests, setting the page number and/or size parameters
@@ -32,10 +35,9 @@ traits:
         required: false
         example: -firstName,lastName
 
-
-
-
-
+###################
+## Resource Types
+###################
 
 ## TODO: Refactor these into resourceType folder
 resourceTypes:
@@ -48,13 +50,12 @@ resourceTypes:
       responses:
         200:
           body:
-            example: |
-              <<examplePaginatedResponse>>
+            example: <<examplePaginatedResponseExample>>
     post:
       description: Create a new <<resourcePathName | !singularize>>
       body:
-        application/json: object
-        example: <<createResourceExample>>
+        application/json:
+          example: <<createResourceRequestExample>>
       responses:
         201:
           description: Succesfully created a new <<resourcePathName | !singularize>>
@@ -63,50 +64,53 @@ resourceTypes:
               description: Location of the newly created <<resourcePathName | !singularize>>
               type: string
               required: false
+          body:
+            application/json:
+              description: Returns the created <<resourcePathName | !singularize>> resource
+              example: <<createResourceResponseExample>>
 
   individual:
-    description: Resourcce type for API operations on individual resource
+    description: Resource type for API operations on individual resource
     get:
-      description: |
-        Retrieve <<resourcePathName | !singularize>> denoted by the identifier
+      description: Retrieve <<resourcePathName | !singularize>> denoted by the identifier
       responses:
         200:
-          description: |
-            Succesfully retrieved resource
+          description: Returns the <<resourcePathName | !singularize>> object
+          body: <<getSingleResourceExample>>
     put:
       description: |
         Update an existing  <<resourcePathName | !singularize>>
       body:
-        application/json: object
-        example: <<exampleUpdateResourceBody>>
+        application/json:
+          example: <<updateResourceRequestExample>>
       responses:
         204:
-          description: |
-            Succesfully updated the resource
+          description: Returns the <<resourcePathName | !singularize>> object
+          body: <<updateResourceResponseExample>>
     delete:
       description: |
         Delete an existing <<resourcePathName | !singularize>>
       responses:
         204:
-          description: |
-            Succesfully deleted resource
+          description: Resource successfully deleted. No response body.
 
 
-
+###################
 ## API Definitions
-
+###################
 /customers:
-  description: APIs for collection of Customer resource
-  type:  { collection: {examplePaginatedResponse : !include examples/customer-response-paginated-example.json, createResourceExample : !include examples/customer-request-example.json } }
+  description: Set of APIs to manage Customer resource.
+  type:  { collection: {examplePaginatedResponseExample : !include examples/getCustomerPaginatedResponse-example.json, createResourceRequestExample : !include examples/customer-example.json, createResourceResponseExample: !include examples/createCustomerResponse-example.json  } }
 
   get:
     is: [pageable,sortable]
 
   /{customerId}:
-    type:  { individual: {exampleUpdateResourceBody : !include examples/customer-request-example.json} }
-    description: All operations on a single customer resource
+    description: Operations on individual Customer resource
+    type:  { individual: {updateResourceRequestExample : !include examples/customer-example.json, updateResourceResponseExample: !include examples/customer-example.json, getSingleResourceExample: !include examples/customer-example.json } }
 
   /search:
+    description: API to search for customers.
     get:
       is:  [pageable,sortable]
       description: |
@@ -132,4 +136,4 @@ resourceTypes:
         200:
           description: |
             Paginated list of customers that match search term
-          body: !include examples/customer-response-paginated-example.json
+          body: !include examples/getCustomerPaginatedResponse-example.json
