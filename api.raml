@@ -4,41 +4,40 @@ version: v1
 protocols: [HTTPS]
 baseUri: https://api.samplehost.com/api/{version}
 mediaType: application/json
+description: |
+  APIs to manage Customers. These APIs are protected by Basic Authentication.
+  </br>
+  To interact with these API, you will need an user account.
+
+###################
+## Security Schemes
+###################
+securitySchemes:
+  basic: !include securitySchemes/basic.raml
+
+###################
+## Schemas
+###################
+types:
+  errorResponse : !include schemas/errorResponse.json
+  customer: !include schemas/customer.json
 
 ###################
 ## Traits
 ###################
-
 traits:
-  pageable:
-    description: Trait for paginated requests, setting the page number and/or size parameters
-    queryParameters:
-      pageNo:
-        description: The page number to fetch
-        type: number
-        required: false
-        default: 0
-        example: 5
-      pageSize:
-        description: The maximum number of records to fetch per page
-        type: number
-        required: false
-        default: 100
-        example: 5
-  sortable:
-    description: Trait for sortable requests, setting the sorting field and order
-    queryParameters:
-      sortBy:
-        description: |
-          List of fields to sort by (comma separated). For example: #TODO: add example
-        type: string
-        required: false
-        example: -firstName,lastName
+  pageable: !include traits/pageable.raml
+  sortable: !include traits/sortable.raml
+  throwsForbiddenError: !include traits/throwsForbiddenError.raml
+  throwsResourceNotFoundError: !include traits/throwsResourceNotFoundError.raml
+  throwsInternalServerError: !include traits/throwsInternalServerError.raml
+
+
+
 
 ###################
 ## Resource Types
 ###################
-
 ## TODO: Refactor these into resourceType folder
 resourceTypes:
   collection:
@@ -46,12 +45,17 @@ resourceTypes:
     description: A collection of <<resourcePathName>> in the system. Due to the high volume of data that can be retrieved, the response is paginated.
 
     get:
-      description: Retrieve a paginated list of <<resourcePathName | !pluralize>>
+      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+      description: Retrieve all <<resourcePathName | !pluralize>>
       responses:
         200:
           body:
-            example: <<examplePaginatedResponseExample>>
+            application/json:
+              example: <<examplePaginatedResponseExample>>
+
+
     post:
+      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
       description: Create a new <<resourcePathName | !singularize>>
       body:
         application/json:
@@ -69,27 +73,41 @@ resourceTypes:
               description: Returns the created <<resourcePathName | !singularize>> resource
               example: <<createResourceResponseExample>>
 
-  individual:
+        400:
+          description: Invalid API request submitted for creating a new <<resourcePathName | !singularize>>
+          body:
+            application/json:
+              example: <<createResourceBadRequestExample>>
+              type: errorResponse
+
+  resource:
     description: Resource type for API operations on individual resource
     get:
-      description: Retrieve <<resourcePathName | !singularize>> denoted by the identifier
+      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+      description: Retrieve a single <<resourcePathName | !singularize>>
       responses:
         200:
           description: Returns the <<resourcePathName | !singularize>> object
-          body: <<getSingleResourceExample>>
+          body:
+            application/json:
+              example: <<getSingleResourceExample>>
+
+
     put:
-      description: |
-        Update an existing  <<resourcePathName | !singularize>>
+      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+      description: Update an existing  <<resourcePathName | !singularize>>
       body:
         application/json:
           example: <<updateResourceRequestExample>>
       responses:
         204:
           description: Returns the <<resourcePathName | !singularize>> object
-          body: <<updateResourceResponseExample>>
+          body:
+            application/json:
+              example: <<updateResourceResponseExample>>
     delete:
-      description: |
-        Delete an existing <<resourcePathName | !singularize>>
+      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+      description: Delete an existing <<resourcePathName | !singularize>>
       responses:
         204:
           description: Resource successfully deleted. No response body.
@@ -99,20 +117,26 @@ resourceTypes:
 ## API Definitions
 ###################
 /customers:
+  displayName: Customer collection
+  securedBy: basic
   description: Set of APIs to manage Customer resource.
-  type:  { collection: {examplePaginatedResponseExample : !include examples/getCustomerPaginatedResponse-example.json, createResourceRequestExample : !include examples/customer-example.json, createResourceResponseExample: !include examples/createCustomerResponse-example.json  } }
-
+  type:  { collection: {examplePaginatedResponseExample : !include examples/getCustomerPaginatedResponse-example.json, createResourceRequestExample : !include examples/customer-example.json, createResourceResponseExample: !include examples/createCustomerResponse-example.json, createResourceBadRequestExample: !include examples/400-createCustomerBadRequest-example.json,   } }
   get:
     is: [pageable,sortable]
 
+
   /{customerId}:
+    displayName: Customer resource
+    securedBy: basic
     description: Operations on individual Customer resource
-    type:  { individual: {updateResourceRequestExample : !include examples/customer-example.json, updateResourceResponseExample: !include examples/customer-example.json, getSingleResourceExample: !include examples/customer-example.json } }
+    type:  { resource: {updateResourceRequestExample : !include examples/customer-example.json, updateResourceResponseExample: !include examples/customer-example.json, getSingleResourceExample: !include examples/customer-example.json } }
 
   /search:
-    description: API to search for customers.
+    displayName: Customer search
+    securedBy: basic
+    description: Search for customers in the system based on their attributes
     get:
-      is:  [pageable,sortable]
+      is:  [pageable,sortable,throwsInternalServerError]
       description: |
         Search for customers by first name, last name or address
       queryParameters:
@@ -136,4 +160,12 @@ resourceTypes:
         200:
           description: |
             Paginated list of customers that match search term
-          body: !include examples/getCustomerPaginatedResponse-example.json
+          body:
+            application/json:
+              example: !include examples/getCustomerPaginatedResponse-example.json
+        400:
+          description: Bad search request submitted
+          body:
+            application/json:
+              example: !include examples/400-badSearchRequest.json
+              type: errorResponseSchema

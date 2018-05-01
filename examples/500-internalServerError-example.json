@@ -1,0 +1,6 @@
+{
+  "code": 500,
+  "errorMessages": [
+    "An internal server error has occured processing your request",
+  ]
+}

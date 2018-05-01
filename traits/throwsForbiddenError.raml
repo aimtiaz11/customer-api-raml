@@ -1,0 +1,8 @@
+description: |
+  API can throw a HTTP 403 - Forbidden response if API consumer does not have the privilege to to perfrom API operation on the resource
+responses:
+  403:
+    description: Permission denied exception
+    body:
+      application/json:
+        example: !include ../examples/403-permissionDenied-example.json

@@ -1,0 +1,7 @@
+{
+  "code": 400,
+  "errorMessages": [
+    "'firstName' must be between 1 and 30 characters",
+    "'lastName' must be between 1 and 30 characters"
+  ]
+}

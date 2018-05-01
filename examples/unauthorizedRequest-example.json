@@ -1,0 +1,6 @@
+{
+  "code": 401,
+  "errorMessages": [
+    "Invalid authentication credentials supplied"
+  ]
+}

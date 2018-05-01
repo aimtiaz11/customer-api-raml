@@ -1,0 +1,14 @@
+description: This API supports Basic Authentication.
+type: Basic Authentication
+displayName: Basic Auth
+describedBy:
+  headers:
+    Authorization:
+      description: Authorization header will have the user ID and password in base64 encoded pair.
+      example: Authorization Basic Sm9objpzZWNyZXQ=
+  responses:
+    401:
+      description: When invalid credential has been supplied.
+      body:
+        application/json:
+          example: !include ../examples/unauthorizedRequest-example.json

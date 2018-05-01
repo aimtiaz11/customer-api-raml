@@ -1,0 +1,6 @@
+{
+  "code": 400,
+  "errorMessages": [
+    "'fristname' is not a valid query parameter"
+  ]
+}
