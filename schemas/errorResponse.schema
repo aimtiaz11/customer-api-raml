@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "code": {
+      "type": "number",
+      "required": true,
+      "desciption": "Echo of the HTTP error code"
+    },
+    "errorMessages": {
+      "type": "array",
+      "required": true,
+      "description": "A list of error messages from server in string format",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

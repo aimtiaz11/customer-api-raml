@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "pageSize": {
+      "type": "integer",
+      "required": true,
+      "minimum": 1,
+      "maximum": 100,
+      "description": "Number of records per page"
+    },
+    "pageNo": {
+      "type": "integer",
+      "required": true,
+      "minimum": 0,
+      "description": "The page number being requested"
+
+    },
+    "totalPages": {
+      "type": "integer",
+      "required": true,
+      "minimum": 1,
+      "description": "The number of records per page"
+
+    },
+    "first": {
+      "type": "boolean",
+      "required": true,
+      "description": "Denotes whether the page of records being viewed is the first page"
+    },
+    "last": {
+      "type": "boolean",
+      "required": true,
+      "description": "Denotes whether the page of records being viewed is the last page"
+    },
+
+    "totalElements": {
+      "type": "integer",
+      "required": true,
+      "minimum": 0,
+      "description": "The total number of elements across all pages of the response"
+    },
+
+    "data": {
+      "type": "array",
+      "description": "Contains all the response objects",
+      "items": {
+        "type": "any"
+      }
+    }
+  }
+}
