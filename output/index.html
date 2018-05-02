@@ -166,7 +166,60 @@
       .resource-modal li > ul {
         margin-bottom: 1em;
       }
-    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>customer-api-raml API documentation <small>version v1</small></h1><p>https://api.samplehost.com/api/{version}</p><p>APIs to manage Customers. These APIs are protected by Basic Authentication.<br>To interact with these API, you will need an user account.</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="customers" class="panel-title">Customer collection</h3></div><div class="panel-body"><div class="top-resource-description"><p>Set of APIs to manage Customer resource.</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers"><span class="parent"></span>/customers</a> <span class="methods"><a href="#customers_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve all customers</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Create a new customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all customers</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_get_response" data-toggle="tab">Response</a></li><li><a href="#customers_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_get_request"><h3>Query Parameters</h3><ul><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>customer-api-raml API documentation <small>version v1</small></h1><p>https://api.samplehost.com/api/{version}</p><p>APIs to manage Customers. These APIs are protected by Basic Authentication.<br>To interact with these API, you will need an user account.</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="customers" class="panel-title">Customer collection</h3></div><div class="panel-body"><div class="top-resource-description"><p>Set of APIs to manage Customer resource.</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers"><span class="parent"></span>/customers</a> <span class="methods"><a href="#customers_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve all customers</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Create a new customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all customers</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_get_response" data-toggle="tab">Response</a></li><li><a href="#customers_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_get_request"><h3>Query Parameters</h3><ul><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "pageSize": {
+      "type": "integer",
+      "required": true,
+      "minimum": 1,
+      "maximum": 100,
+      "description": "Number of records per page"
+    },
+    "pageNo": {
+      "type": "integer",
+      "required": true,
+      "minimum": 0,
+      "description": "The page number being requested"
+
+    },
+    "totalPages": {
+      "type": "integer",
+      "required": true,
+      "minimum": 1,
+      "description": "The number of records per page"
+
+    },
+    "first": {
+      "type": "boolean",
+      "required": true,
+      "description": "Denotes whether the page of records being viewed is the first page"
+    },
+    "last": {
+      "type": "boolean",
+      "required": true,
+      "description": "Denotes whether the page of records being viewed is the last page"
+    },
+
+    "totalElements": {
+      "type": "integer",
+      "required": true,
+      "minimum": 0,
+      "description": "The total number of elements across all pages of the response"
+    },
+
+    "data": {
+      "type": "array",
+      "description": "Contains all the response objects",
+      "items": {
+        "type": "any"
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "pageSize": 3,
   "pageNo": 0,
   "totalPages": 224,
@@ -255,21 +308,66 @@
     "Invalid authentication credentials supplied"
   ]
 }
-</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li><li><a href="#customers_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li><li><a href="#customers_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "firstName": "Fraser",
   "lastName": "Brendand",
   "address": "1 Charles Street, Westmead, NSW, 2145"
 }
-</code></pre></div></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new customer</p><h3>Headers</h3><ul><li><strong>Content-Location</strong>: <em>(string)</em><p>Location of the newly created customer</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new customer</p><h3>Headers</h3><ul><li><strong>Content-Location</strong>: <em>(string)</em><p>Location of the newly created customer</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "customerId": 588992,
   "firstName": "Fraser",
   "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145",
-  "_link": {
-    "rel": "self",
-    "url": "http://api.samplehost.com/api/v1/customers/58892",
-    "method": "GET"
-  }
+  "address": "1 Charles Street, Westmead, NSW, 2145"
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Invalid API request submitted for creating a new customer</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -278,11 +376,16 @@
   "properties": {
     "code": {
       "type": "number",
-      "required": true
+      "required": true,
+      "desciption": "Echo of the HTTP error code"
     },
     "errorMessages": {
       "type": "array",
-      "required": true
+      "required": true,
+      "description": "A list of error messages from server in string format",
+      "items": {
+        "type": "string"
+      }
     }
   }
 }
@@ -317,7 +420,32 @@
     "Invalid authentication credentials supplied"
   ]
 }
-</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "firstName": "Fraser",
   "lastName": "Brendand",
   "address": "1 Charles Street, Westmead, NSW, 2145"
@@ -346,12 +474,62 @@
     "Invalid authentication credentials supplied"
   ]
 }
-</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "firstName": "Fraser",
   "lastName": "Brendand",
   "address": "1 Charles Street, Westmead, NSW, 2145"
 }
-</code></pre></div></div><div class="tab-pane" id="customers__customerid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div><div class="tab-pane" id="customers__customerid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "firstName": "Fraser",
   "lastName": "Brendand",
   "address": "1 Charles Street, Westmead, NSW, 2145"
@@ -469,7 +647,27 @@
     }
   ]
 }
-</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad search request submitted</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: errorResponseSchema</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad search request submitted</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "code": {
+      "type": "number",
+      "required": true,
+      "desciption": "Echo of the HTTP error code"
+    },
+    "errorMessages": {
+      "type": "array",
+      "required": true,
+      "description": "A list of error messages from server in string format",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "code": 400,
   "errorMessages": [
     "&#39;fristname&#39; is not a valid query parameter"
