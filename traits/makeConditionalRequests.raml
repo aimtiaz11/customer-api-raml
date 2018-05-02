@@ -1,0 +1,13 @@
+# This trait defines request headers and response body and headers for conditional requests.
+# Uses "ETag" and "If-None-Match" headers to make the conditional requests.  
+headers:
+  If-None-Match:
+    required: false
+    description: Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.
+responses:
+  304:
+    description: The resource has not been modified, the body is empty and the version cached by the API consumer may be used.
+    headers:
+      Cache-Control:
+        required: false
+        example: max-age 0
