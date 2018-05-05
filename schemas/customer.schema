@@ -16,10 +16,16 @@
       "maxLength": 100
     },
     "address": {
-      "type": "string",
+      "type": "object",
       "required": true,
-      "minLength": 1,
-      "maxLength": 200
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
     }
   }
 }

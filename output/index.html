@@ -326,17 +326,30 @@
       "maxLength": 100
     },
     "address": {
-      "type": "string",
+      "type": "object",
       "required": true,
-      "minLength": 1,
-      "maxLength": 200
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "firstName": "Fraser",
-  "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145"
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
 }
 </code></pre></div></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new customer</p><h3>Headers</h3><ul><li><strong>Content-Location</strong>: <em>(string)</em><p>Location of the newly created customer</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -356,18 +369,30 @@
       "maxLength": 100
     },
     "address": {
-      "type": "string",
+      "type": "object",
       "required": true,
-      "minLength": 1,
-      "maxLength": 200
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "customerId": 588992,
-  "firstName": "Fraser",
-  "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145"
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Invalid API request submitted for creating a new customer</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -438,17 +463,30 @@
       "maxLength": 100
     },
     "address": {
-      "type": "string",
+      "type": "object",
       "required": true,
-      "minLength": 1,
-      "maxLength": 200
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "firstName": "Fraser",
-  "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145"
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "code": 403,
@@ -492,17 +530,30 @@
       "maxLength": 100
     },
     "address": {
-      "type": "string",
+      "type": "object",
       "required": true,
-      "minLength": 1,
-      "maxLength": 200
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "firstName": "Fraser",
-  "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145"
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -522,17 +573,30 @@
       "maxLength": 100
     },
     "address": {
-      "type": "string",
+      "type": "object",
       "required": true,
-      "minLength": 1,
-      "maxLength": 200
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "firstName": "Fraser",
-  "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145"
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "code": 403,

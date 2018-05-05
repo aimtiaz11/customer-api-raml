@@ -1,5 +1,12 @@
 {
-  "firstName": "Fraser",
-  "lastName": "Brendand",
-  "address": "1 Charles Street, Westmead, NSW, 2145"
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
 }
