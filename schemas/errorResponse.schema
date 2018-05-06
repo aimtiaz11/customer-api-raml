@@ -22,7 +22,7 @@
         "error": {
           "type": ["string", "array"],
           "required": true,
-          "description": "Description of the error that occured. This will be a string for single error message. For multiple, it will be an array of strings."
+          "description": "Description of the error that occured. This will be a string for single error message. For multiple error messages, it will be an array of strings."
         },
         "request": {
           "type": "string",

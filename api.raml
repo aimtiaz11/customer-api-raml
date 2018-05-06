@@ -36,6 +36,16 @@ traits:
   throwsResourceNotFoundError: !include traits/throwsResourceNotFoundError.raml
   throwsInternalServerError: !include traits/throwsInternalServerError.raml
   makeConditionalRequests: !include traits/makeConditionalRequests.raml
+  allowPatch:
+      description: Allow partial modification of resource << resourcePathName | !singularize >>
+      body: <<examplePatchResourceBody>>
+      responses:
+        204:
+          description: Returns the <<resourcePathName | !singularize>> object
+          body:
+            application/json:
+              example: <<patchResourceResponseExample>>
+              type: <<patchResourceResponseType>>
 
 
 ###################
@@ -102,7 +112,7 @@ resourceTypes:
 
       responses:
         200:
-          description: Returns the <<resourcePathName | !singularize>> object
+          description: Returns the <<resourcePathName | !singularize>> resource
           body:
             application/json:
               example: <<getSingleResourceExample>>
@@ -119,11 +129,13 @@ resourceTypes:
           type: <<updateResourceRequestType>>
       responses:
         204:
-          description: Returns the <<resourcePathName | !singularize>> object
+          description: Returns the <<resourcePathName | !singularize>> resource
           body:
             application/json:
               example: <<updateResourceResponseExample>>
               type: <<updateResourceResponseType>>
+
+
     delete:
       is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
       description: Delete an existing <<resourcePathName | !singularize>>
@@ -162,7 +174,7 @@ resourceTypes:
     displayName: Customer resource
     securedBy: basic
     description: Operations on individual Customer resource
-    is: [makeConditionalRequests]
+
     type:  {
       resource:
           {
@@ -176,6 +188,14 @@ resourceTypes:
             getSingleResourceType: customer
           }
       }
+    get:
+      is: [ makeConditionalRequests]
+    patch:
+      is:  [allowPatch: {
+          examplePatchResourceBody : !include examples/patchCustomer-example.json,
+          patchResourceResponseExample : !include examples/customer-example.json,
+          patchResourceResponseType : customer
+        }]
 
   /search:
     displayName: Customer search

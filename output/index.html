@@ -424,7 +424,7 @@
         "error": {
           "type": ["string", "array"],
           "required": true,
-          "description": "Description of the error that occured. This will be a string for single error message. For multiple, it will be an array of strings."
+          "description": "Description of the error that occured. This will be a string for single error message. For multiple error messages, it will be an array of strings."
         },
         "request": {
           "type": "string",
@@ -488,7 +488,7 @@
     "method": "GET"
   }
 }
-</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__patch"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__patch'" class="list-group-item"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Allow partial modification of resource &lt;&lt; resourcePathName | !singularize &gt;&gt;</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
@@ -567,7 +567,64 @@
     "method": "GET"
   }
 }
-</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Allow partial modification of resource &lt;&lt; resourcePathName | !singularize &gt;&gt;</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__patch_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__patch_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__patch_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__patch_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>:</p><pre><code>{
+    "address": {
+        "postCode": "2145"
+    }
+}
+</code></pre></div><div class="tab-pane" id="customers__customerid__patch_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "addressLine1": {"type": "string", "required": true},
+        "addressLine2": {"type": "string", "required": true},
+        "city": {"type": "string", "required": true},
+        "state": {"type": "string", "required": true},
+        "postCode": {"type": "string", "required": true},
+        "country": {"type": "string", "required": true}
+      }
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "firstName": "Fraser",
+    "lastName": "Brendand",
+    "address": {
+        "addressLine1": "1 Jessie street",
+        "addressLine2": "",
+        "city": "Sydney",
+        "state": "NSW",
+        "postCode": "2145",
+        "country": "Australia"
+    }
+}
+</code></pre></div></div><div class="tab-pane" id="customers__customerid__patch_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
+}
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
@@ -653,7 +710,7 @@
         "country": "Australia"
     }
 }
-</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "success": false,
   "status": 403,
   "data": {
@@ -689,7 +746,7 @@
     "method": "GET"
   }
 }
-</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__delete_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__delete_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__delete_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Resource successfully deleted. No response body.</p><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__delete_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__delete_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__delete_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Resource successfully deleted. No response body.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "success": false,
   "status": 403,
   "data": {
@@ -793,7 +850,7 @@
         "error": {
           "type": ["string", "array"],
           "required": true,
-          "description": "Description of the error that occured. This will be a string for single error message. For multiple, it will be an array of strings."
+          "description": "Description of the error that occured. This will be a string for single error message. For multiple error messages, it will be an array of strings."
         },
         "request": {
           "type": "string",
