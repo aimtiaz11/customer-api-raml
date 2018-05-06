@@ -1,65 +1,44 @@
 {
-  "pageSize": 3,
-  "pageNo": 0,
-  "totalPages": 224,
-  "first": true,
-  "last": false,
-  "totalElements": 1118,
-  "data": [
-    {
-      "customerId": 588992,
-      "firstName": "Fraser",
-      "lastName": "Brendand",
-      "address": "1 Charles Street, Westmead, NSW, 2145",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/58588992892",
-        "method": "GET"
+  "success": true,
+  "status": 200,
+  "data": {
+    "pageSize": 3,
+    "pageNo": 0,
+    "totalPages": 224,
+    "first": true,
+    "last": false,
+    "totalElements": 1118,
+    "customers": [
+      {
+        "customerId": 588992,
+        "firstName": "Fraser",
+        "lastName": "Brendand",
+        "address": "1 Charles Street, Westmead, NSW, 2145"
+      },
+      {
+        "customerId": 588294,
+        "firstName": "Raymond",
+        "lastName": "Johnson",
+        "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
+      },
+      {
+        "customerId": 588214,
+        "firstName": "Albert",
+        "lastName": "Steve",
+        "address": "4/5 Chestnut Place, Burwood, NSW, 2245"
+      },
+      {
+        "customerId": 182842,
+        "firstName": "Albert",
+        "lastName": "Steve",
+        "address": "1 Delhi Road, North Ryde, NSW, 2312"
+      },
+      {
+        "customerId": 18284,
+        "firstName": "Amanda",
+        "lastName": "Bell",
+        "address": "9 Mountain Street, Wyong, NSW, 2411"
       }
-    },
-    {
-      "customerId": 588294,
-      "firstName": "Raymond",
-      "lastName": "Johnson",
-      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/588294",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 588214,
-      "firstName": "Albert",
-      "lastName": "Steve",
-      "address": "4/5 Chestnut Place, Burwood, NSW, 2245",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/588214",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 182842,
-      "firstName": "Albert",
-      "lastName": "Steve",
-      "address": "1 Delhi Road, North Ryde, NSW, 2312",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/182842",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 18284,
-      "firstName": "Amanda",
-      "lastName": "Bell",
-      "address": "9 Mountain Street, Wyong, NSW, 2411",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/18284",
-        "method": "GET"
-      }
-    }
-  ]
+    ]
+  }
 }

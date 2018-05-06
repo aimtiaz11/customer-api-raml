@@ -1,6 +1,9 @@
 {
-  "code": 400,
-  "errorMessages": [
-    "'fristname' is not a valid query parameter"
-  ]
+  "success": false,
+  "status": 400,
+  "data": {
+      "error": "'fristname' is not a valid query parameter",
+      "request": "/api/v1/customers?fristname=John",
+      "method": "GET"
+  }
 }

@@ -171,142 +171,148 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
   "properties": {
-    "pageSize": {
-      "type": "integer",
-      "required": true,
-      "minimum": 1,
-      "maximum": 100,
-      "description": "Number of records per page"
-    },
-    "pageNo": {
-      "type": "integer",
-      "required": true,
-      "minimum": 0,
-      "description": "The page number being requested"
-
-    },
-    "totalPages": {
-      "type": "integer",
-      "required": true,
-      "minimum": 1,
-      "description": "The number of records per page"
-
-    },
-    "first": {
+    "success": {
       "type": "boolean",
       "required": true,
-      "description": "Denotes whether the page of records being viewed is the first page"
+      "description": "Denotes success or erronous API response."
     },
-    "last": {
-      "type": "boolean",
-      "required": true,
-      "description": "Denotes whether the page of records being viewed is the last page"
-    },
-
-    "totalElements": {
+    "status": {
       "type": "integer",
       "required": true,
-      "minimum": 0,
-      "description": "The total number of elements across all pages of the response"
+      "description": "Echo of the HTTP status code"
     },
-
     "data": {
-      "type": "array",
-      "description": "Contains all the response objects",
-      "items": {
-        "type": "any"
+      "type": "object",
+      "required": false,
+      "description": "For holding any response data.",
+
+      "properties": {
+
+        "pageSize": {
+          "type": "integer",
+          "required": true,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Number of records per page"
+        },
+        "pageNo": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "description": "The page number being requested"
+
+        },
+        "totalPages": {
+          "type": "integer",
+          "required": true,
+          "minimum": 1,
+          "description": "The number of records per page"
+
+        },
+        "first": {
+          "type": "boolean",
+          "required": true,
+          "description": "Denotes whether the page of records being viewed is the first page"
+        },
+        "last": {
+          "type": "boolean",
+          "required": true,
+          "description": "Denotes whether the page of records being viewed is the last page"
+        },
+
+        "totalElements": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "description": "The total number of elements across all pages of the response"
+        },
+        "customers": {
+          "type": "array",
+          "description": "List of customer resources"
+        }
       }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "pageSize": 3,
-  "pageNo": 0,
-  "totalPages": 224,
-  "first": true,
-  "last": false,
-  "totalElements": 1118,
-  "data": [
-    {
-      "customerId": 588992,
-      "firstName": "Fraser",
-      "lastName": "Brendand",
-      "address": "1 Charles Street, Westmead, NSW, 2145",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/58588992892",
-        "method": "GET"
+  "success": true,
+  "status": 200,
+  "data": {
+    "pageSize": 3,
+    "pageNo": 0,
+    "totalPages": 224,
+    "first": true,
+    "last": false,
+    "totalElements": 1118,
+    "customers": [
+      {
+        "customerId": 588992,
+        "firstName": "Fraser",
+        "lastName": "Brendand",
+        "address": "1 Charles Street, Westmead, NSW, 2145"
+      },
+      {
+        "customerId": 588294,
+        "firstName": "Raymond",
+        "lastName": "Johnson",
+        "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
+      },
+      {
+        "customerId": 588214,
+        "firstName": "Albert",
+        "lastName": "Steve",
+        "address": "4/5 Chestnut Place, Burwood, NSW, 2245"
+      },
+      {
+        "customerId": 182842,
+        "firstName": "Albert",
+        "lastName": "Steve",
+        "address": "1 Delhi Road, North Ryde, NSW, 2312"
+      },
+      {
+        "customerId": 18284,
+        "firstName": "Amanda",
+        "lastName": "Bell",
+        "address": "9 Mountain Street, Wyong, NSW, 2411"
       }
-    },
-    {
-      "customerId": 588294,
-      "firstName": "Raymond",
-      "lastName": "Johnson",
-      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/588294",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 588214,
-      "firstName": "Albert",
-      "lastName": "Steve",
-      "address": "4/5 Chestnut Place, Burwood, NSW, 2245",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/588214",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 182842,
-      "firstName": "Albert",
-      "lastName": "Steve",
-      "address": "1 Delhi Road, North Ryde, NSW, 2312",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/182842",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 18284,
-      "firstName": "Amanda",
-      "lastName": "Bell",
-      "address": "9 Mountain Street, Wyong, NSW, 2411",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/18284",
-        "method": "GET"
-      }
-    }
-  ]
+    ]
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 403,
-  "errorMessages": [
-    "You do not have permission to perform this action",
-  ]
+  "success": false,
+  "status": 403,
+  "data": {
+      "error": "You do not have permission to perform this action",
+      "request": "/api/v1/customers",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 404,
-  "errorMessages": [
-    "Resource not found",
-  ]
+  "success": false,
+  "status": 404,
+  "data": {
+      "error": "Resource could not be located",
+      "request": "/api/v1/customers/899585",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }
 </code></pre></div></div><div class="tab-pane" id="customers_get_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }
 </code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li><li><a href="#customers_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -399,51 +405,88 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
   "properties": {
-    "code": {
-      "type": "number",
+    "success": {
+      "type": "boolean",
       "required": true,
-      "desciption": "Echo of the HTTP error code"
+      "description": "Denotes success or erronous API response. For error response, this is always false."
     },
-    "errorMessages": {
-      "type": "array",
+    "status": {
+      "type": "integer",
       "required": true,
-      "description": "A list of error messages from server in string format",
-      "items": {
-        "type": "string"
+      "description": "Echo of the HTTP status code"
+    },
+    "data": {
+      "type": "object",
+      "required": true,
+      "description": "For holding any response data.",
+
+      "properties": {
+        "error": {
+          "type": ["string", "array"],
+          "required": true,
+          "description": "Description of the error that occured. This will be a string for single error message. For multiple, it will be an array of strings."
+        },
+        "request": {
+          "type": "string",
+          "required": true,
+          "description": "API request path on which the error has occured"
+        },
+        "method": {
+          "type": "string",
+          "required": true,
+          "description": "HTTP method that has been invoked"
+        }
       }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 400,
-  "errorMessages": [
-    "&#39;firstName&#39; must be between 1 and 30 characters",
-    "&#39;lastName&#39; must be between 1 and 30 characters"
-  ]
+  "success": false,
+  "status": 400,
+  "data": {
+    "error": [
+      "&#39;firstName&#39; must be between 1 and 30 characters",
+      "&#39;lastName&#39; must be between 1 and 30 characters"
+    ],
+    "request": "/api/v1/customers",
+    "method": "POST"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 403,
-  "errorMessages": [
-    "You do not have permission to perform this action",
-  ]
+  "success": false,
+  "status": 403,
+  "data": {
+      "error": "You do not have permission to perform this action",
+      "request": "/api/v1/customers",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 404,
-  "errorMessages": [
-    "Resource not found",
-  ]
+  "success": false,
+  "status": 404,
+  "data": {
+      "error": "Resource could not be located",
+      "request": "/api/v1/customers/899585",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }
 </code></pre></div></div><div class="tab-pane" id="customers_post_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }
 </code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -489,28 +532,40 @@
     }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 403,
-  "errorMessages": [
-    "You do not have permission to perform this action",
-  ]
+  "success": false,
+  "status": 403,
+  "data": {
+      "error": "You do not have permission to perform this action",
+      "request": "/api/v1/customers",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 404,
-  "errorMessages": [
-    "Resource not found",
-  ]
+  "success": false,
+  "status": 404,
+  "data": {
+      "error": "Resource could not be located",
+      "request": "/api/v1/customers/899585",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__get_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }
 </code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
@@ -599,154 +654,186 @@
     }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 403,
-  "errorMessages": [
-    "You do not have permission to perform this action",
-  ]
+  "success": false,
+  "status": 403,
+  "data": {
+      "error": "You do not have permission to perform this action",
+      "request": "/api/v1/customers",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 404,
-  "errorMessages": [
-    "Resource not found",
-  ]
+  "success": false,
+  "status": 404,
+  "data": {
+      "error": "Resource could not be located",
+      "request": "/api/v1/customers/899585",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__put_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }
 </code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__delete_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__delete_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__delete_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Resource successfully deleted. No response body.</p><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2><p>The resource has not been modified, the body is empty and the version cached by the API consumer may be used.</p><h3>Headers</h3><ul><li><strong>Cache-Control</strong>: <em>(string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>max-age 0</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 403,
-  "errorMessages": [
-    "You do not have permission to perform this action",
-  ]
+  "success": false,
+  "status": 403,
+  "data": {
+      "error": "You do not have permission to perform this action",
+      "request": "/api/v1/customers",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 404,
-  "errorMessages": [
-    "Resource not found",
-  ]
+  "success": false,
+  "status": 404,
+  "data": {
+      "error": "Resource could not be located",
+      "request": "/api/v1/customers/899585",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__delete_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }
 </code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers_search"><span class="parent">/customers</span>/search</a> <span class="methods"><a href="#customers_search_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers_search" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Search for customers in the system based on their attributes</p></div><div class="list-group"><div onclick="window.location.href = '#customers_search_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Search for customers by first name, last name or address</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/search</h4></div><div class="modal-body"><div class="alert alert-info"><p>Search for customers by first name, last name or address</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>Basic Auth</b><p>This API supports Basic Authentication.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_search_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_search_get_response" data-toggle="tab">Response</a></li><li><a href="#customers_search_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_search_get_request"><h3>Query Parameters</h3><ul><li><strong>firstName</strong>: <em>(string)</em><p>First name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>John</code></pre></div></li><li><strong>lastName</strong>: <em>(string)</em><p>Last name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Smith</code></pre></div></li><li><strong>address</strong>: <em>(string)</em><p>Add whole or part of the address to retrieve matching customers. This could be suburb, postcode or state.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Wyong, Mountain%20Street, 2145</code></pre></div></li><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Paginated list of customers that match search term</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "pageSize": 3,
-  "pageNo": 0,
-  "totalPages": 224,
-  "first": true,
-  "last": false,
-  "totalElements": 1118,
-  "data": [
-    {
-      "customerId": 588992,
-      "firstName": "Fraser",
-      "lastName": "Brendand",
-      "address": "1 Charles Street, Westmead, NSW, 2145",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/58588992892",
-        "method": "GET"
+  "success": true,
+  "status": 200,
+  "data": {
+    "pageSize": 3,
+    "pageNo": 0,
+    "totalPages": 224,
+    "first": true,
+    "last": false,
+    "totalElements": 1118,
+    "customers": [
+      {
+        "customerId": 588992,
+        "firstName": "Fraser",
+        "lastName": "Brendand",
+        "address": "1 Charles Street, Westmead, NSW, 2145"
+      },
+      {
+        "customerId": 588294,
+        "firstName": "Raymond",
+        "lastName": "Johnson",
+        "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
+      },
+      {
+        "customerId": 588214,
+        "firstName": "Albert",
+        "lastName": "Steve",
+        "address": "4/5 Chestnut Place, Burwood, NSW, 2245"
+      },
+      {
+        "customerId": 182842,
+        "firstName": "Albert",
+        "lastName": "Steve",
+        "address": "1 Delhi Road, North Ryde, NSW, 2312"
+      },
+      {
+        "customerId": 18284,
+        "firstName": "Amanda",
+        "lastName": "Bell",
+        "address": "9 Mountain Street, Wyong, NSW, 2411"
       }
-    },
-    {
-      "customerId": 588294,
-      "firstName": "Raymond",
-      "lastName": "Johnson",
-      "address": "4/5 Dover Heights, Tarens Point, NSW, 2245",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/588294",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 588214,
-      "firstName": "Albert",
-      "lastName": "Steve",
-      "address": "4/5 Chestnut Place, Burwood, NSW, 2245",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/588214",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 182842,
-      "firstName": "Albert",
-      "lastName": "Steve",
-      "address": "1 Delhi Road, North Ryde, NSW, 2312",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/182842",
-        "method": "GET"
-      }
-    },
-    {
-      "customerId": 18284,
-      "firstName": "Amanda",
-      "lastName": "Bell",
-      "address": "9 Mountain Street, Wyong, NSW, 2411",
-      "_link": {
-        "rel": "self",
-        "url": "http://api.samplehost.com/api/v1/customers/18284",
-        "method": "GET"
-      }
-    }
-  ]
+    ]
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad search request submitted</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
   "properties": {
-    "code": {
-      "type": "number",
+    "success": {
+      "type": "boolean",
       "required": true,
-      "desciption": "Echo of the HTTP error code"
+      "description": "Denotes success or erronous API response. For error response, this is always false."
     },
-    "errorMessages": {
-      "type": "array",
+    "status": {
+      "type": "integer",
       "required": true,
-      "description": "A list of error messages from server in string format",
-      "items": {
-        "type": "string"
+      "description": "Echo of the HTTP status code"
+    },
+    "data": {
+      "type": "object",
+      "required": true,
+      "description": "For holding any response data.",
+
+      "properties": {
+        "error": {
+          "type": ["string", "array"],
+          "required": true,
+          "description": "Description of the error that occured. This will be a string for single error message. For multiple, it will be an array of strings."
+        },
+        "request": {
+          "type": "string",
+          "required": true,
+          "description": "API request path on which the error has occured"
+        },
+        "method": {
+          "type": "string",
+          "required": true,
+          "description": "HTTP method that has been invoked"
+        }
       }
     }
   }
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 400,
-  "errorMessages": [
-    "&#39;fristname&#39; is not a valid query parameter"
-  ]
+  "success": false,
+  "status": 400,
+  "data": {
+      "error": "&#39;fristname&#39; is not a valid query parameter",
+      "request": "/api/v1/customers?fristname=John",
+      "method": "GET"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }
 </code></pre></div></div><div class="tab-pane" id="customers_search_get_securedby"><h1>Secured by Basic Auth</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Authorization header will have the user ID and password in base64 encoded pair.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Authorization Basic Sm9objpzZWNyZXQ=</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>When invalid credential has been supplied.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }
 </code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#customers">Customer collection</a></li></ul></div></div></div></div></body></html>

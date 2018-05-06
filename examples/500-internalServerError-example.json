@@ -1,6 +1,9 @@
 {
-  "code": 500,
-  "errorMessages": [
-    "An internal server error has occured processing your request",
-  ]
+  "success": false,
+  "status": 500,
+  "data": {
+      "error": "An internal server error has occured processing your request",
+      "request": "/api/v1/customers/44981",
+      "method": "DELETE"
+  }
 }

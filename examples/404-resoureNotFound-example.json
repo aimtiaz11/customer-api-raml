@@ -1,6 +1,9 @@
 {
-  "code": 404,
-  "errorMessages": [
-    "Resource not found",
-  ]
+  "success": false,
+  "status": 404,
+  "data": {
+      "error": "Resource could not be located",
+      "request": "/api/v1/customers/899585",
+      "method": "GET"
+  }
 }

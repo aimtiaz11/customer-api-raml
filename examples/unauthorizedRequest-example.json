@@ -1,6 +1,9 @@
 {
-  "code": 401,
-  "errorMessages": [
-    "Invalid authentication credentials supplied"
-  ]
+  "success": false,
+  "status": 401,
+  "data": {
+    "error": "Method requires authentication",
+    "request": "/api/v1/customers",
+    "method": "GET"
+  }
 }

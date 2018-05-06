@@ -3,17 +3,37 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
   "properties": {
-    "code": {
-      "type": "number",
+    "success": {
+      "type": "boolean",
       "required": true,
-      "desciption": "Echo of the HTTP error code"
+      "description": "Denotes success or erronous API response. For error response, this is always false."
     },
-    "errorMessages": {
-      "type": "array",
+    "status": {
+      "type": "integer",
       "required": true,
-      "description": "A list of error messages from server in string format",
-      "items": {
-        "type": "string"
+      "description": "Echo of the HTTP status code"
+    },
+    "data": {
+      "type": "object",
+      "required": true,
+      "description": "For holding any response data.",
+
+      "properties": {
+        "error": {
+          "type": ["string", "array"],
+          "required": true,
+          "description": "Description of the error that occured. This will be a string for single error message. For multiple, it will be an array of strings."
+        },
+        "request": {
+          "type": "string",
+          "required": true,
+          "description": "API request path on which the error has occured"
+        },
+        "method": {
+          "type": "string",
+          "required": true,
+          "description": "HTTP method that has been invoked"
+        }
       }
     }
   }
