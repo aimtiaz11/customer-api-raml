@@ -1,0 +1,48 @@
+usage: Resource type for API operations on collection of resources
+description: A collection of <<resourcePathName>> in the system. Due to the high volume of data that can be retrieved, the response is paginated.
+
+get:
+  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError,makeConditionalRequests]
+  description: Retrieve all <<resourcePathName | !pluralize>>
+  responses:
+    200:
+      headers:
+        ETag:
+          description: This ETag header value should be used if client wishes to make subsequent conditional GET requests.
+          example: "4499494"
+          required: true
+      body:
+        application/json:
+          example: <<examplePaginatedResponseExample>>
+          type: <<examplePaginatedResponseType>>
+
+
+
+post:
+  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+  description: Create a new <<resourcePathName | !singularize>>
+  body:
+    application/json:
+      example: <<createResourceRequestExample>>
+      type: <<createResourceRequestType>>
+
+  responses:
+    201:
+      description: Succesfully created a new <<resourcePathName | !singularize>>
+      headers:
+        Content-Location:
+          description: Location of the newly created <<resourcePathName | !singularize>>
+          type: string
+          required: false
+      body:
+        application/json:
+          description: Returns the created <<resourcePathName | !singularize>> resource
+          example: <<createResourceResponseExample>>
+          type: <<createResourceResponseType>>
+
+    400:
+      description: Invalid API request submitted for creating a new <<resourcePathName | !singularize>>
+      body:
+        application/json:
+          example: <<createResourceBadRequestExample>>
+          type: errorResponse

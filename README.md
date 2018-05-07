@@ -52,7 +52,7 @@ Application authentication clients only has read-only access to the data. They a
 
 In this section we describe how we can fulfil the above 2 use cases.
 
-### 3.1 Automated access to the API (Use case 1)
+### 3.1 Automated access to the API (use case 1)
 
 An API consumer that wish to invoke customer APIs periodically will need to register with the API service with the client ID and client secret.
 
@@ -102,7 +102,7 @@ If the resource has not been modified, the API server will respond with a HTTP 3
 Both the pagination feature and conditional request feature prevents server and network from being overloaded by expensive API calls.
 
 
-### 3.2 Mobile and IoT integration (Use case 2)
+### 3.2 Mobile and IoT integration (use case 2)
 
 #### 3.2.1 Authentication process
 
@@ -137,3 +137,8 @@ The API uses standard response model which look like below:
 We use this object for all HTTP responses, whether its 200 OK or 400 Bad Request.
 
 Application developers can easily write cleaner client side code to handle the response object and extract success response or error messages from the code.
+
+
+## 4.1 Adding other resources (use case 3)
+
+### 

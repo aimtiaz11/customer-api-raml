@@ -21,7 +21,7 @@ securitySchemes:
 ###################
 types:
   customer:
-    description: Model for Customer resource
+    description: Model for 'Customer' resource
     schema: !include schemas/customer.schema
 
   errorResponse:
@@ -61,97 +61,9 @@ traits:
 ###################
 ## Resource Types
 ###################
-## TODO: Refactor these into resourceType folder
 resourceTypes:
-  collection:
-    usage: Resource type for API operations on collection of resources
-    description: A collection of <<resourcePathName>> in the system. Due to the high volume of data that can be retrieved, the response is paginated.
-
-    get:
-      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError,makeConditionalRequests]
-      description: Retrieve all <<resourcePathName | !pluralize>>
-      responses:
-        200:
-          headers:
-            ETag:
-              description: This ETag header value should be used if client wishes to make subsequent conditional GET requests.
-              example: "4499494"
-              required: true
-          body:
-            application/json:
-              example: <<examplePaginatedResponseExample>>
-              type: <<examplePaginatedResponseType>>
-
-
-
-    post:
-      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
-      description: Create a new <<resourcePathName | !singularize>>
-      body:
-        application/json:
-          example: <<createResourceRequestExample>>
-          type: <<createResourceRequestType>>
-
-      responses:
-        201:
-          description: Succesfully created a new <<resourcePathName | !singularize>>
-          headers:
-            Content-Location:
-              description: Location of the newly created <<resourcePathName | !singularize>>
-              type: string
-              required: false
-          body:
-            application/json:
-              description: Returns the created <<resourcePathName | !singularize>> resource
-              example: <<createResourceResponseExample>>
-              type: <<createResourceResponseType>>
-
-        400:
-          description: Invalid API request submitted for creating a new <<resourcePathName | !singularize>>
-          body:
-            application/json:
-              example: <<createResourceBadRequestExample>>
-              type: errorResponse
-
-  resource:
-    description: Resource type for API operations on individual resource
-    get:
-      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
-      description: Retrieve a single <<resourcePathName | !singularize>>
-
-
-      responses:
-        200:
-          description: Returns the <<resourcePathName | !singularize>> resource
-          body:
-            application/json:
-              example: <<getSingleResourceExample>>
-              type: <<getSingleResourceType>>
-
-
-
-    put:
-      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
-      description: Update an existing  <<resourcePathName | !singularize>>
-      body:
-        application/json:
-          example: <<updateResourceRequestExample>>
-          type: <<updateResourceRequestType>>
-      responses:
-        204:
-          description: Returns the <<resourcePathName | !singularize>> resource
-          body:
-            application/json:
-              example: <<updateResourceResponseExample>>
-              type: <<updateResourceResponseType>>
-
-
-    delete:
-      is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
-      description: Delete an existing <<resourcePathName | !singularize>>
-      responses:
-        204:
-          description: Resource successfully deleted. No response body.
+  collection: !include ./resourceTypes/collection.raml
+  resource: !include ./resourceTypes/resource.raml
 
 
 ###################

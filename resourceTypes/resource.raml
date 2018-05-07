@@ -1,0 +1,38 @@
+description: Resource type for API operations on individual resource
+get:
+  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+  description: Retrieve a single <<resourcePathName | !singularize>>
+
+
+  responses:
+    200:
+      description: Returns the <<resourcePathName | !singularize>> resource
+      body:
+        application/json:
+          example: <<getSingleResourceExample>>
+          type: <<getSingleResourceType>>
+
+
+
+put:
+  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+  description: Update an existing  <<resourcePathName | !singularize>>
+  body:
+    application/json:
+      example: <<updateResourceRequestExample>>
+      type: <<updateResourceRequestType>>
+  responses:
+    204:
+      description: Returns the <<resourcePathName | !singularize>> resource
+      body:
+        application/json:
+          example: <<updateResourceResponseExample>>
+          type: <<updateResourceResponseType>>
+
+
+delete:
+  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+  description: Delete an existing <<resourcePathName | !singularize>>
+  responses:
+    204:
+      description: Resource successfully deleted. No response body.
