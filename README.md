@@ -12,20 +12,20 @@ To preview the API specification in your browser, please see [here](https://rawg
 
 ## 2. Security considerations
 
-### HTTPS
+### 2.1 HTTPS
 
 To encrypt traffic between the API consumer and API server, HTTPS will be used in conjunction with TLS. This will prevent man-in-the-middle attacks, packet sniffing and other similar malicious attacks.
 
 Using HTTPS with TLS 1.2 is important as the APIs are internet facing (as opposed to point-to-point in a data centre or WAN/LAN). This warrants all communications to be encrypted end-to-end. TLS 1.0 is currently more widely adopted, however major API vendors are [slowly deprecating it in favour of TLS 1.2](https://www.thesslstore.com/blog/deprecation-tls-1-0-1-1-underway/).
 
 
-### OAuth for authorization
+### 2.2 OAuth for authorization
 
 The APIs will be protected using OAuth 2.0. OAuth 2.0 is deemed more secure than other methods such as API keys and Basic Auth as user authentication credentials are not passed around in every request. Although, a downside is that implementing OAuth is a bit more cumbersome than simple API keys or Basic Auth.
 
 We will support two variants of OAuth - two-legged (application authentication) and three-legged (user authentication) and both are intended to satisfy the use case 1 and 2.
 
-#### Application authentication
+#### 2.2.1 Application authentication
 
 Application authentication (or two-legged OAuth) does not require any user context. The Authorization process involves:
 
@@ -36,14 +36,14 @@ API client will need to keep the `client_id` and `client_secret` encrypted for s
 
 This is suitable for applications or automated scripts that run at regular interval to fetch client data.
 
-#### User Authentication
+#### 2.2.2 User Authentication
 
 This is the traditional OAuth scenario where the API Client is redirect to the Authorization server to enter their credentials. Upon successful authentication, the client receives the access and refresh tokens that will be used to communicate with the API server.
 
 This is suitable for mobile or web application clients.
 
 
-#### The difference between User and Application Authentication
+#### 2.2.3 The difference between User and Application Authentication
 
 Application authentication clients only has read-only access to the data. They are unable to create, update or delete a resource.
 
@@ -85,11 +85,11 @@ Authorization: Bearer sdfasdlkfjasdlfjaaf
 ```
 
 
-#### Request pagination
+#### 3.1.1 Request pagination
 
 Due to the high volume of data that can be retrieved by the API which can affect performance, we need to enforce pagination. This means that the API client will need to read the pagination attributes such as `pageSize`, `totalPages`, `first` and `last` to determine how many subsequent requests to make to extract the complete collection of resource.
 
-#### Conditional requests
+#### 3.1.2 Conditional requests
 
 Conditional requests allow API client to validate whether their cached copy of the customer resource is valid or not. It makes use of the `ETag` and `If-None-Match` headers.
 
@@ -104,9 +104,11 @@ Both the pagination feature and conditional request feature prevents server and 
 
 ### 3.2 Mobile and IoT integration (Use case 2)
 
+#### 3.2.1 Authentication process
+
 Mobile and IoT devices should leverage the the `User Authentication` (three-legged OAuth) which will give them access to full range of APIs that the API server has to offer.
 
-All mobile applications will need a `client_id` and `client_secret`.
+All mobile applications will need a `client_id` and `client_secret` which they will obtain after registering their mobile device or application with the API service.
 
 End-users such as a Customer Service Representative using the application, will need to authenticate in the application and obtain an `access_token` which can then be used for
 
@@ -116,13 +118,22 @@ The authentication flow will be as follows:
 2. The mobile application redirect to the Authorization Server which will present a page/screen for customer service agent to enter their credentials.
 3. Customer service agent will enter the credential and upon submission, the Authorization Server will redirect back to the client application URL (Authorization grant process)
 4. The mobile application will extract the `authorization_code` from the response and call `/oauth2/authorize` to obtain the `access_token` and `refresh_token`
-5. The Authorization server will return the `access_token` and `refresh_token`.
+5. The Authorization server will return the `access_token` and `refresh_token` back to the mobile application.
 6. The API will use `access_token` for all future interactions with the API Server.
 
 
+#### 3.2.2 Developing around the APIs
 
+The API uses standard response model which look like below:
+```
+{
+  "success": true,
+  "status": 200,
+  "data": {
+    // actual response data goes here
+  }
+}
+```
+We use this object for all HTTP responses, whether its 200 OK or 400 Bad Request.
 
-### 4. Additional consideration
-
-
-#### 4.3 Rate limiting
+Application developers can easily write cleaner client side code to handle the response object and extract success response or error messages from the code.
