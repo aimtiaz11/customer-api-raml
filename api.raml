@@ -4,10 +4,9 @@ version: v1
 protocols: [HTTPS]
 baseUri: https://api.samplehost.com/api/{version}
 mediaType: application/json
-
 description: !
   "This document serves as an API specification for permitted operations on Customer resource.\n"
-
+securedBy: oauth_2_0
 
 ###################
 ## Security Schemes
@@ -21,9 +20,19 @@ securitySchemes:
 ## Types
 ###################
 types:
-  errorResponse : !include schemas/errorResponse.schema
-  customer: !include schemas/customer.schema
-  paginatedResponse: !include schemas/paginatedResponse.schema
+  customer:
+    description: Model for Customer resource
+    schema: !include schemas/customer.schema
+
+  errorResponse:
+    description: Standard model for all error responses (irrespective of the code)
+    schema: !include schemas/errorResponse.schema
+
+  paginatedResponse:
+    description: |
+      Standard model for paginated response.\n
+      The paginated response contain necessary attributes which will indicate to the consumer how many times they will need to invoke to API to obtain the complete resultset.
+    schema: !include schemas/paginatedResponse.schema
 
 
 
@@ -150,7 +159,6 @@ resourceTypes:
 ###################
 /customers:
   displayName: Customer collection
-  securedBy: oauth_2_0
   description: Set of APIs to manage Customer resource.
   type:  {
             collection:
@@ -200,7 +208,6 @@ resourceTypes:
 
   /search:
     displayName: Customer search
-    securedBy: oauth_2_0
     description: Search for customers in the system based on their attributes
     get:
       is:  [pageable,sortable,throwsInternalServerError]
