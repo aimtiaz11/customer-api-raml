@@ -5,16 +5,17 @@ protocols: [HTTPS]
 baseUri: https://api.samplehost.com/api/{version}
 mediaType: application/json
 
-description: |
-  APIs to manage Customers. These APIs are protected by Basic Authentication.
-  </br>
-  To interact with these API, you will need an user account.
+description: !
+  "This document serves as an API specification for permitted operations on Customer resource.\n"
+
 
 ###################
 ## Security Schemes
 ###################
 securitySchemes:
   basic: !include securitySchemes/basic.raml
+  oauth_2_0: !include securitySchemes/oauth_2_0.raml
+
 
 ###################
 ## Types
@@ -149,7 +150,7 @@ resourceTypes:
 ###################
 /customers:
   displayName: Customer collection
-  securedBy: basic
+  securedBy: oauth_2_0
   description: Set of APIs to manage Customer resource.
   type:  {
             collection:
@@ -172,7 +173,7 @@ resourceTypes:
 
   /{customerId}:
     displayName: Customer resource
-    securedBy: basic
+    securedBy: oauth_2_0
     description: Operations on individual Customer resource
 
     type:  {
@@ -199,7 +200,7 @@ resourceTypes:
 
   /search:
     displayName: Customer search
-    securedBy: basic
+    securedBy: oauth_2_0
     description: Search for customers in the system based on their attributes
     get:
       is:  [pageable,sortable,throwsInternalServerError]

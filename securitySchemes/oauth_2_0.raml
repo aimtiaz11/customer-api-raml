@@ -1,0 +1,25 @@
+description: !
+  "The APIs are protected by OAuth 2.0.\n
+  All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to
+  obtain the client_id and client_secret."
+
+type: OAuth 2.0
+describedBy:
+    headers:
+      Authorization:
+        example: |
+          Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
+        description: |
+          Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.
+        type: string
+    responses:
+      401:
+        description: Bad or expired access token.
+      403:
+        description: Unauthorized - If client with access token invokes API operation that they are not allowed.
+
+settings:
+  scopes: [customers:read, customers:write]
+  authorizationUri: https://{baseUri}/oauth2/authorize
+  accessTokenUri: https://{baseUri}/oauth2/token
+  authorizationGrants: [ authorization_code, client_credentials ]
