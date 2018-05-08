@@ -125,7 +125,7 @@ The authentication flow will be as follows:
 #### 3.2.2 Developing around the APIs
 
 The API uses standard response model which look like below:
-```
+```json
 {
   "success": true,
   "status": 200,
@@ -141,4 +141,74 @@ Application developers can easily write cleaner client side code to handle the r
 
 ## 4.1 Adding other resources (use case 3)
 
-### 
+The API spec has been developed to make it easier further expand it to include other resources such as `orders` and `products`.
+
+### 4.1.2 Heavy use resourceTypes and parameterisation
+
+We defined two resourceType called `collection` and `resource`. `collection` is designed to be used on a collection of resources. For example, `/customers` or `/accounts` or `products`.
+
+`resource` is applicable to individual resource. For example, `/customers/{customerId}`, `orders/{orderId}`.
+
+The applicable HTTP methods (GET, PUT, POST etc) has been applied directly to the resource types instead of the resource themselves.
+
+`collection` allows the following method:
+1. GET - Retrieve the whole collection of resources
+2. POST - Create a new resource in the collectoin
+
+`resource` allows the following methods:
+1. GET - Retrieve resource
+2. PUT - Update resource
+3. DELETE - Delete resource
+
+This way, we can simply add our new resources and associate them with the resourceType and it will cover the common API methods automatically.
+
+
+Suppose we are adding the following new resources: `orders` and `products`. An use case around these new resources is that `customer` places `orders` and `orders` have `products`. So there is a one-to-many between `customers` and one-to-many between `orders` and `products`.
+
+The following are some method examples that that we might wish to implement.
+
+1. `/customers/{customerId}/orders`: All orders that belong to a customer
+2. `/customers/{customerId}/orders/{orderId}`: Specific order that belong to a customer
+3. `/customers/{customerId}/orders/{orderId}/products`: List of products in an order that customer placed
+4. `/products`: A collection of all products
+5. `/products/{productId}`: Retrieve a product
+
+The following snippet shows how we could add `orders` within `customer`:
+
+```raml
+/customers:
+ ### content removed for brevity ###
+  /orders:
+    type: {
+        ## Associate type 'collection'
+        collection:
+              {
+                examplePaginatedResponseExample : !include examples/getCustomerOrders-example.json,
+                examplePaginatedResponseType: paginatedResponse,
+
+                createResourceRequestExample : !include examples/order-example.json,
+                createResourceRequestType: order,
+
+                createResourceResponseExample: !include examples/createOrderResponse-example.json,
+                createResourceResponseType: order,
+
+                createResourceBadRequestExample: !include examples/badRequestExample.json
+              }
+        }
+  /orders/{orderId}:
+    ## Associate type 'resource' with individual order item
+    type: {
+        resource:
+          {
+            updateResourceRequestExample : !include examples/order-example.json,
+            updateResourceRequestType: order,
+
+            updateResourceResponseExample: !include examples/order-example.json,
+            updateResourceResponseType: order,
+
+            getSingleResourceExample: !include examples/order-example.json,
+            getSingleResourceType: order
+          }
+        }
+```
+Therefore by associating the API methods with the resource types, we make this easily scalable to other resources.
