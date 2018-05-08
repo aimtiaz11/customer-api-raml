@@ -136,7 +136,7 @@ The API uses standard response model which look like below:
 ```
 We use this object for all HTTP responses, whether its 200 OK or 400 Bad Request.
 
-Application developers can easily write cleaner client side code to handle the response object and extract success response or error messages from the code.
+Application developers can easily write cleaner client-side code to handle the response object and extract success response or error messages from the code.
 
 
 ## 4.1 Adding other resources (use case 3)
@@ -145,7 +145,7 @@ The API spec has been developed to make it easier further expand it to include o
 
 ### 4.1.2 Heavy use resourceTypes and parameterisation
 
-We defined two resourceType called `collection` and `resource`. `collection` is designed to be used on a collection of resources. For example, `/customers` or `/accounts` or `products`.
+We defined two resourceType called `collection` and `resource`. `collection` is designed to be used on a collection (of resources). For example, `/customers` or `/accounts` or `products`.
 
 `resource` is applicable to individual resource. For example, `/customers/{customerId}`, `orders/{orderId}`.
 
@@ -153,27 +153,30 @@ The applicable HTTP methods (GET, PUT, POST etc) has been applied directly to th
 
 `collection` allows the following method:
 1. GET - Retrieve the whole collection of resources
-2. POST - Create a new resource in the collectoin
+2. POST - Create a new resource in the collection
 
 `resource` allows the following methods:
 1. GET - Retrieve resource
 2. PUT - Update resource
 3. DELETE - Delete resource
 
-This way, we can simply add our new resources and associate them with the resourceType and it will cover the common API methods automatically.
+This way, we can simply add new resources and associate them with the resource types and it will cover the common API methods automatically.
 
+Note: There may be cases were we may not want to allow a certain API operation on a collection or resource. For example, deleting customers, in this cases we would remove the HTTP DELETE method away from the resource type and apply it on the applicable resources.
 
-Suppose we are adding the following new resources: `orders` and `products`. An use case around these new resources is that `customer` places `orders` and `orders` have `products`. So there is a one-to-many between `customers` and one-to-many between `orders` and `products`.
+In real life, we might not put a destructive operation like DELETE under resource type but rather directly on the collection or resources.  
 
-The following are some method examples that that we might wish to implement.
+Suppose we are adding the following new resources: `orders` and `products`. An use case around these new resources is that `customer` places `orders` and `orders` will contain number of `products`. So there is a one-to-many between `customers` and one-to-many between `orders` and `products`.
+
+Using these relationships, the API URLs might look like below:
 
 1. `/customers/{customerId}/orders`: All orders that belong to a customer
 2. `/customers/{customerId}/orders/{orderId}`: Specific order that belong to a customer
 3. `/customers/{customerId}/orders/{orderId}/products`: List of products in an order that customer placed
 4. `/products`: A collection of all products
-5. `/products/{productId}`: Retrieve a product
+5. `/products/{productId}`: A particular product
 
-The following snippet shows how we could add `orders` within `customer`:
+The following snippet shows how we could add `order` resource and nest it within `customer`:
 
 ```raml
 /customers:
@@ -212,3 +215,16 @@ The following snippet shows how we could add `orders` within `customer`:
         }
 ```
 Therefore by associating the API methods with the resource types, we make this easily scalable to other resources.
+
+
+
+# 5. Other design decisions
+
+## 5.1 Not using HATEOAS links
+
+Strict adherence to REST standards mandate having hypermedia links and in the community there are strong proponents both for and against having hypermedia links in the response body.
+
+I have deliberately left out hypermedia links, as they do not really serve any purpose as far as the use cases are concerned. On the other hand, they make API response more bloated.
+
+## 5.2 Naming conventions
+Nouns have been used for resource and collections while verbs have been used for non-CRUD methods. For example, `customer/search?firstName=Robert`
