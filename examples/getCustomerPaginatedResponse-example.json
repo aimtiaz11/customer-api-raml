@@ -13,31 +13,66 @@
         "customerId": 588992,
         "firstName": "Fraser",
         "lastName": "Brendand",
-        "address": "1 Charles Street, Westmead, NSW, 2145"
+        "address": {
+            "addressLine1": "1 Charles Street",
+            "addressLine2": "",
+            "city": "Westmead",
+            "state": "NSW",
+            "postCode": "2145",
+            "country": "Australia"
+        }
       },
       {
         "customerId": 588294,
         "firstName": "Raymond",
         "lastName": "Johnson",
-        "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
+        "address": {
+            "addressLine1": "4/5 Dover Heights",
+            "addressLine2": "",
+            "city": "Tarens Point",
+            "state": "NSW",
+            "postCode": "2245",
+            "country": "Australia"
+        }
       },
       {
         "customerId": 588214,
         "firstName": "Albert",
         "lastName": "Steve",
-        "address": "4/5 Chestnut Place, Burwood, NSW, 2245"
+        "address": {
+            "addressLine1": "4/5 Chestnut Place",
+            "addressLine2": "",
+            "city": "Burwood",
+            "state": "NSW",
+            "postCode": "2245",
+            "country": "Australia"
+        }
       },
       {
         "customerId": 182842,
         "firstName": "Albert",
         "lastName": "Steve",
-        "address": "1 Delhi Road, North Ryde, NSW, 2312"
+        "address": {
+            "addressLine1": "1 Delhi Road",
+            "addressLine2": "",
+            "city": "North Ryde",
+            "state": "NSW",
+            "postCode": "2312",
+            "country": "Australia"
+        }
       },
       {
         "customerId": 18284,
         "firstName": "Amanda",
         "lastName": "Bell",
-        "address": "9 Mountain Street, Wyong, NSW, 2411"
+        "address": {
+            "addressLine1": "9 Mountain Street",
+            "addressLine2": "",
+            "city": "Wyong",
+            "state": "NSW",
+            "postCode": "2411",
+            "country": "Australia"
+        }
       }
     ]
   }

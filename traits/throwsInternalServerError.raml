@@ -2,6 +2,7 @@ description: |
   API can throw HTTP 500 - Internal server error if system encounters errors processing the transaction
 responses:
   500:
+    description: Internal server error
     body:
       application/json:
         example: !include ../examples/500-internalServerError-example.json

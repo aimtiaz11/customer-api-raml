@@ -1,6 +1,8 @@
 # customer-api-raml
 
-API documentation for managing customers written in RAML. The API is designed to satisfy the following use cases:
+API specification for a sample API service that provide methods to manage customers.
+
+The API specification is designed to satisfy the following use cases:
 
 1. Allowing automated API consumers (for example, cron jobs or middleware applications) invoke APIs to fetch list of customers.
 2. An end-user such as customer service representative should be able to use a mobile device to manage customers using the APIs
@@ -41,7 +43,7 @@ This is suitable for applications or automated scripts that run at regular inter
 
 This is the traditional OAuth scenario (three-legged scenario) where the API Client is redirect to the Authorization server to enter their credentials. Upon successful authentication, the client receives the access and refresh tokens that will be used to communicate with the API server.
 
-This is suitable for mobile or web application clients with a end-user involved.
+This is suitable for mobile or web application clients with an end-user involved.
 
 
 #### 2.2.3 The difference between User and Application Authentication
@@ -90,7 +92,11 @@ The `refresh_token` can be used to obtain a new `access_token` when that expires
 
 #### 3.1.1 Request pagination
 
-Due to the high volume of data that can be retrieved by the API which can affect performance, we need to enforce pagination. This means that the API client will need to read the pagination attributes such as `pageSize`, `totalPages`, `first` and `last` to determine how many subsequent requests to make to extract the complete collection of the customer resource.
+Due to the high volume of data that can be retrieved by the API which can affect performance, we need to enforce pagination which will restrict the amount of data that can be fetched per API call.
+
+This will help reduce load on the server as the API's consumer base scales up.
+
+This means that the API client will need to read the pagination attributes such as `pageSize`, `totalPages`, `first` and `last` to determine how many subsequent requests to make to extract the complete collection of the customer resource.
 
 #### 3.1.2 Conditional requests
 
@@ -137,9 +143,9 @@ The API uses standard response model which look like below:
   }
 }
 ```
-We use this object for all HTTP responses, whether its 200 OK or 400 Bad Request.
+We use this object for all HTTP responses - whether its 200 OK or 400 Bad Request or any other response types.
 
-Application developers can easily write cleaner client-side code to handle the response object and extract success response or error messages from the code.
+This way, application developers can easily write cleaner client-side code to handle the response object and extract success response or error messages from the code.
 
 
 ## 4.1 Adding other resources (use case 3)
@@ -152,7 +158,8 @@ We defined two resourceType called *collectionType* and *resourceType*.
 
 *collectionType* is designed to be used on a collection (of resources). For example, `/customers` or `/accounts` or `/products`.
 
-*resourceType* is applicable to individual resource - an individual item in the collection.
+*resourceType* is applicable to individual resource - an item in the collection of resources.
+
 For example, `/customers/{customerId}`, `orders/{orderId}`.
 
 The applicable HTTP methods (GET, PATCH, PUT, POST, DELETE) has been applied directly to the resource types instead of the resource themselves.

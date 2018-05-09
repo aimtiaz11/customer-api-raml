@@ -19,7 +19,7 @@ get:
 
 
 post:
-  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
+  is: [throwsForbiddenError,throwsInternalServerError]
   description: Create a new <<resourcePathName | !singularize>>
   body:
     application/json:

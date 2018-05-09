@@ -28,6 +28,11 @@ types:
     description: Standard model for all error responses (irrespective of the code)
     schema: !include schemas/errorResponse.schema
 
+  successResponse:
+    description: Standard response model for all success responses
+    schema: !include schemas/successResponse.schema
+
+
   paginatedResponse:
     description: |
       Standard model for paginated response.\n
@@ -48,11 +53,11 @@ traits:
   makeConditionalRequests: !include traits/makeConditionalRequests.raml
   allowPatch:
     description: |
-      Allow partial modification of resource << resourcePathName | !singularize >>
+      Allow partial modification of <<resourcePathName | !singularize>>
     body: <<examplePatchResourceBody>>
     responses:
       204:
-        description: Returns the <<resourcePathName | !singularize>> object
+        description: Returns the <<resourcePathName | !singularize>>
         body:
           application/json:
             example: <<patchResourceResponseExample>>
@@ -83,7 +88,7 @@ resourceTypes:
                 createResourceRequestType: customer,
 
                 createResourceResponseExample: !include examples/createCustomerResponse-example.json,
-                createResourceResponseType: customer,
+                createResourceResponseType: successResponse,
 
                 createResourceBadRequestExample: !include examples/400-createCustomerBadRequest-example.json
               }

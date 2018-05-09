@@ -1,12 +1,16 @@
 {
-    "firstName": "Fraser",
-    "lastName": "Brendand",
-    "address": {
-        "addressLine1": "1 Jessie street",
-        "addressLine2": "",
-        "city": "Sydney",
-        "state": "NSW",
-        "postCode": "2145",
-        "country": "Australia"
-    }
+  "status": 200,
+  "success": true,
+  "data": {
+      "firstName": "Fraser",
+      "lastName": "Brendand",
+      "address": {
+          "addressLine1": "1 Jessie street",
+          "addressLine2": "",
+          "city": "Sydney",
+          "state": "NSW",
+          "postCode": "2145",
+          "country": "Australia"
+      }
+  }
 }
