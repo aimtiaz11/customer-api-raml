@@ -1,6 +1,6 @@
 # customer-api-raml
 
-API specification for a sample API service that provide methods to manage customers.
+Sample API specification developed in RAML for managing customers.
 
 The API specification is designed to satisfy the following use cases:
 
@@ -52,15 +52,16 @@ Clients who obtain their token via _Application Authentication_ will only have r
 
 ## 3. Consumer integration
 
-In this section we describe how we can fulfil the above 2 use cases.
+In this section we describe how we can fulfil first two use cases.
 
 ### 3.1 Automated access to the API (use case 1)
 
-An API consumer that wish to invoke customer APIs periodically will need to register with the API service with the client ID and client secret.
+An API consumer that wish to invoke customer APIs periodically will need to register with the API service in order to obtain client ID and client secret.
 
-Auth flow:
 
-API consumer sends a request for token:
+Once they have obtained that, the rest of the OAuth authrorization will follow as below:
+
+**Step 1:** API consumer sends a request for token by sending the `client_id` and `client_secret` obtained during registration in an `Authorization` header as Base64 encoded string.
 
 ```
 POST /oauth/token HTTP/1.1
@@ -69,7 +70,7 @@ Authorization: Basic Base64(client_id:client_secret)
 
 ```
 
-The Authorization server will response with the token:
+**Step 2:** The Authorization server will response with the token:
 
 ```json
 {
@@ -79,7 +80,7 @@ The Authorization server will response with the token:
 }
 ```
 
-The client can then use the `access_token` for all subsequent API calls by specifying it in the `Authorization` header.
+**Step 3:** The client can then use the `access_token` for all subsequent API calls by specifying it in the `Authorization` header.
 
 ```http
 GET /api/v1/customers?pageNo=0 HTTP/1.1
@@ -87,7 +88,7 @@ Host: api.samplehost.com
 Authorization: Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
 ```
 
-The `refresh_token` can be used to obtain a new `access_token` when that expires.
+> The `refresh_token` can be used to obtain a new `access_token` when that expires.
 
 
 #### 3.1.1 Request pagination
@@ -145,16 +146,16 @@ The API uses standard response model which look like below:
 ```
 We use this object for all HTTP responses - whether its 200 OK or 400 Bad Request or any other response types.
 
-This way, application developers can easily write cleaner client-side code to handle the response object and extract success response or error messages from the code.
+This way, application developers can easily write cleaner client-side code as they can always expect a single standard 3 attribute response object as response.
 
 
 ## 4.1 Adding other resources (use case 3)
 
 The API spec has been developed to make it easier further expand it to include other resources such as `orders` and `products`.
 
-### 4.1.2 Heavy use resourceTypes and parameterisation
+### 4.1.2 Heavy use resource types and parameterisation
 
-We defined two resourceType called *collectionType* and *resourceType*.
+In the API spec, we defined two resource type called *collectionType* and *resourceType*.
 
 *collectionType* is designed to be used on a collection (of resources). For example, `/customers` or `/accounts` or `/products`.
 
@@ -192,10 +193,9 @@ Using these relationships, the API URLs might look like below:
 4. `/products`: A collection of all products
 5. `/products/{productId}`: A particular product
 
-The following snippet shows how we could add `order` resource and nest it within `customer`:
+The following snippet shows how we could introduce a new `order` resource and nest it within the current `customer` resource:
 
 ```raml
-
 
 ### Types
 types:
@@ -243,7 +243,7 @@ types:
         }
 ```
 
-> Note: The JSON schemas and samples responses before the above setup can be done.
+> Note: The JSON schemas and samples responses need to be created as first step before the above API setups can be added.
 
 
 Therefore, by associating the API methods with the resource types, we make this easily scalable to other resources.

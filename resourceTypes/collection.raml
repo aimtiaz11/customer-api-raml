@@ -2,10 +2,11 @@ usage: Resource type for API operations on collection of resources
 description: A collection of <<resourcePathName>> in the system. Due to the high volume of data that can be retrieved, the response is paginated.
 
 get:
-  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError,makeConditionalRequests]
+  is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
   description: Retrieve all <<resourcePathName | !pluralize>>
   responses:
     200:
+      description: Success response.
       headers:
         ETag:
           description: This ETag header value should be used if client wishes to make subsequent conditional GET requests.
@@ -20,7 +21,7 @@ get:
 
 post:
   is: [throwsForbiddenError,throwsInternalServerError]
-  description: Create a new <<resourcePathName | !singularize>>
+  description: Create a new instance of <<resourcePathName | !singularize>>
   body:
     application/json:
       example: <<createResourceRequestExample>>

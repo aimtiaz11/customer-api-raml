@@ -5,7 +5,7 @@ protocols: [HTTPS]
 baseUri: https://api.samplehost.com/api/{version}
 mediaType: application/json
 description: !
-  "This document serves as an API specification for permitted operations on Customer resource.\n"
+  "API specification for managing customers"
 securedBy: oauth_2_0
 
 ###################
@@ -119,7 +119,7 @@ resourceTypes:
         required: false
         description: Fuzzy search on street line 2
         type: string
-        example: Wyong, Mountain%20Street, 2145
+        example: Mountain%20Street
       address.city:
         required: false
         description: Fuzzy search address
