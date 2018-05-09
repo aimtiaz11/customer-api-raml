@@ -8,7 +8,7 @@ API documentation for managing customers written in RAML. The API is designed to
 
 ## 1. Demo
 
-To preview the API specification in your browser, please see [here](https://rawgit.com/aimtiaz11/customer-api-raml/master/output/index.html).
+To preview the API specification in your browser, please see [here for raml2html output](https://rawgit.com/aimtiaz11/customer-api-raml/master/output/index.html).
 
 
 ## 2. Security considerations
@@ -148,27 +148,27 @@ The API spec has been developed to make it easier further expand it to include o
 
 ### 4.1.2 Heavy use resourceTypes and parameterisation
 
-We defined two resourceType called *collection* and *resource*.
+We defined two resourceType called *collectionType* and *resourceType*.
 
-*collection* is designed to be used on a collection (of resources). For example, `/customers` or `/accounts` or `/products`.
+*collectionType* is designed to be used on a collection (of resources). For example, `/customers` or `/accounts` or `/products`.
 
-*resource* is applicable to individual resource - an individual item in the collection.
+*resourceType* is applicable to individual resource - an individual item in the collection.
 For example, `/customers/{customerId}`, `orders/{orderId}`.
 
 The applicable HTTP methods (GET, PATCH, PUT, POST, DELETE) has been applied directly to the resource types instead of the resource themselves.
 
-`collection` allows the following method:
+`collectionType` allows the following method:
 1. GET - Retrieve the whole collection of resources
 2. POST - Create a new resource in the collection
 
-`resource` allows the following methods:
+`resourceType` allows the following methods:
 1. GET - Retrieve resource
 2. PUT - Update resource
 3. DELETE - Delete resource
 
 This way, we can simply add new resources and associate them with the resource types and it will cover the common API methods automatically.
 
-Note: There may be cases were we may not want to allow a certain API operation on a collection or resource. For example, deleting customers might not be desirable, in this cases we would remove the HTTP DELETE method away from the resource type and apply it on the applicable resources.
+Note: There may be cases were we may not want to allow a certain API operation on a collection or resource. For example, deleting customers might not be desirable, in this cases we would remove the HTTP DELETE method away from the resource type and apply it on the API definitions of the resource themselves.
 
 In real life, we might not put a destructive operation like DELETE under resource type but rather directly on the collection or resources in the API definitions.
 
@@ -188,12 +188,24 @@ Using these relationships, the API URLs might look like below:
 The following snippet shows how we could add `order` resource and nest it within `customer`:
 
 ```raml
+
+
+### Types
+types:
+  customer:
+    description: Model for 'Customer' resource
+    schema: !include schemas/customer.schema
+  order:
+    description: Model for 'order' resource
+    schema: !include schema/order.schema
+
+### API definition
 /customers:
  ### content removed for brevity ###
   /orders:
     type: {
-        ## Associate type 'collection'
-        collection:
+        ## Associate type 'collectionType' to orders
+        collectionType:
               {
                 examplePaginatedResponseExample : !include examples/getCustomerOrders-example.json,
                 examplePaginatedResponseType: paginatedResponse,
@@ -208,9 +220,9 @@ The following snippet shows how we could add `order` resource and nest it within
               }
         }
   /orders/{orderId}:
-    ## Associate type 'resource' with individual order item
+    ## Associate type 'resourceType' with individual order item
     type: {
-        resource:
+        resourceType:
           {
             updateResourceRequestExample : !include examples/order-example.json,
             updateResourceRequestType: order,
@@ -224,12 +236,15 @@ The following snippet shows how we could add `order` resource and nest it within
         }
 ```
 
-Therefore by associating the API methods with the resource types, we make this easily scalable to other resources.
+> Note: The JSON schemas and samples responses before the above setup can be done.
+
+
+Therefore, by associating the API methods with the resource types, we make this easily scalable to other resources.
 
 
 # 5. Other design decisions
 
-## 5.1 Not using HATEOAS links
+## 5.1 Excluding hypermedia links (HATEOAS)
 
 Strict adherence to REST standards mandates having hypermedia links and in the community there are strong proponents both for and against having hypermedia links in the response body.
 

@@ -47,23 +47,24 @@ traits:
   throwsInternalServerError: !include traits/throwsInternalServerError.raml
   makeConditionalRequests: !include traits/makeConditionalRequests.raml
   allowPatch:
-      description: Allow partial modification of resource << resourcePathName | !singularize >>
-      body: <<examplePatchResourceBody>>
-      responses:
-        204:
-          description: Returns the <<resourcePathName | !singularize>> object
-          body:
-            application/json:
-              example: <<patchResourceResponseExample>>
-              type: <<patchResourceResponseType>>
+    description: |
+      Allow partial modification of resource << resourcePathName | !singularize >>
+    body: <<examplePatchResourceBody>>
+    responses:
+      204:
+        description: Returns the <<resourcePathName | !singularize>> object
+        body:
+          application/json:
+            example: <<patchResourceResponseExample>>
+            type: <<patchResourceResponseType>>
 
 
 ###################
 ## Resource Types
 ###################
 resourceTypes:
-  collection: !include ./resourceTypes/collection.raml
-  resource: !include ./resourceTypes/resource.raml
+  collectionType: !include resourceTypes/collection.raml
+  resourceType: !include resourceTypes/resource.raml
 
 
 ###################
@@ -73,7 +74,7 @@ resourceTypes:
   displayName: Customer collection
   description: Set of APIs to manage Customer resource.
   type:  {
-            collection:
+            collectionType:
               {
                 examplePaginatedResponseExample : !include examples/getCustomerPaginatedResponse-example.json,
                 examplePaginatedResponseType: paginatedResponse,
@@ -132,7 +133,7 @@ resourceTypes:
     description: Operations on individual Customer resource
 
     type:  {
-      resource:
+      resourceType:
           {
             updateResourceRequestExample : !include examples/customer-example.json,
             updateResourceRequestType: customer,
