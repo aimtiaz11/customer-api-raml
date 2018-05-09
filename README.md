@@ -7,6 +7,7 @@ API documentation for managing customers written in RAML. The API is designed to
 3. In current state, the API specification only deals with customers. We should be able to expand to other resources such as orders and products with relative ease.
 
 ## 1. Demo
+
 To preview the API specification in your browser, please see [here](https://rawgit.com/aimtiaz11/customer-api-raml/master/output/index.html).
 
 
@@ -125,7 +126,7 @@ The authentication flow will be as follows:
 #### 3.2.2 Developing around the APIs
 
 The API uses standard response model which look like below:
-```json
+```
 {
   "success": true,
   "status": 200,
@@ -214,17 +215,18 @@ The following snippet shows how we could add `order` resource and nest it within
           }
         }
 ```
-Therefore by associating the API methods with the resource types, we make this easily scalable to other resources.
 
+Therefore by associating the API methods with the resource types, we make this easily scalable to other resources.
 
 
 # 5. Other design decisions
 
 ## 5.1 Not using HATEOAS links
 
-Strict adherence to REST standards mandate having hypermedia links and in the community there are strong proponents both for and against having hypermedia links in the response body.
+Strict adherence to REST standards mandates having hypermedia links and in the community there are strong proponents both for and against having hypermedia links in the response body.
 
 I have deliberately left out hypermedia links, as they do not really serve any purpose as far as the use cases are concerned. On the other hand, they make API response more bloated.
 
 ## 5.2 Naming conventions
+
 Nouns have been used for resource and collections while verbs have been used for non-CRUD methods. For example, `customer/search?firstName=Robert`

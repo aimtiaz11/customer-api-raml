@@ -89,8 +89,23 @@ resourceTypes:
         }
   get:
     is: [pageable,sortable]
+    queryParameters:
+      firstName:
+        required: false
+        description: First name of customer
+        type: string
+        example: John
+      lastName:
+        required: false
+        description: Last name of customer
+        type: string
+        example: Smith
+      address:
+        required: false
+        description: Fuzzy search on address attributes, street name, city or postcode.
+        type: string
+        example: Wyong, Mountain%20Street, 2145
 
-    
   /{customerId}:
     displayName: Customer resource
     securedBy: oauth_2_0
@@ -117,41 +132,3 @@ resourceTypes:
           patchResourceResponseExample : !include examples/customer-example.json,
           patchResourceResponseType : customer
         }]
-
-  /search:
-    displayName: Customer search
-    description: Search for customers in the system based on their attributes
-    get:
-      is:  [pageable,sortable,throwsInternalServerError]
-      description: |
-        Search for customers by first name, last name or address
-      queryParameters:
-        firstName:
-          required: false
-          description: First name of customer
-          type: string
-          example: John
-        lastName:
-          required: false
-          description: Last name of customer
-          type: string
-          example: Smith
-        address:
-          required: false
-          description: Add whole or part of the address to retrieve matching customers. This could be suburb, postcode or state.
-          type: string
-          example: Wyong, Mountain%20Street, 2145
-
-      responses:
-        200:
-          description: |
-            Paginated list of customers that match search term
-          body:
-            application/json:
-              example: !include examples/getCustomerPaginatedResponse-example.json
-        400:
-          description: Bad search request submitted
-          body:
-            application/json:
-              example: !include examples/400-badSearchRequest.json
-              type: errorResponse

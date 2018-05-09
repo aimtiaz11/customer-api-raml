@@ -2,7 +2,12 @@ description: Trait for sortable requests, setting the sorting field and order
 queryParameters:
   sortBy:
     description: |
-      List of fields to sort by (comma separated). For example: #TODO: add example
+      Comma seperated list of fields to sort by with sort direction (optional). By
+      default the server will sort in ascending order (asc). To override this, the sort order
+      will need to be specified with a colon after the field.
     type: string
     required: false
-    example: -firstName,lastName
+    example: |
+      - firstName,lastName
+      - firstName:desc,lastName
+      - firstName,lastName:desc

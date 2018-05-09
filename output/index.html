@@ -166,75 +166,10 @@
       .resource-modal li > ul {
         margin-bottom: 1em;
       }
-    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>customer-api-raml API documentation <small>version v1</small></h1><p>https://api.samplehost.com/api/{version}</p><p>This document serves as an API specification for permitted operations on Customer resource.</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="customers" class="panel-title">Customer collection</h3></div><div class="panel-body"><div class="top-resource-description"><p>Set of APIs to manage Customer resource.</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers"><span class="parent"></span>/customers</a> <span class="methods"><a href="#customers_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve all customers</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Create a new customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all customers</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_get_response" data-toggle="tab">Response</a></li><li><a href="#customers_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_get_request"><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul><h3>Query Parameters</h3><ul><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Headers</h3><ul><li><strong>ETag</strong>: <em>required (string)</em><p>This ETag header value should be used if client wishes to make subsequent conditional GET requests.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>4499494</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "success": {
-      "type": "boolean",
-      "required": true,
-      "description": "Denotes success or erronous API response."
-    },
-    "status": {
-      "type": "integer",
-      "required": true,
-      "description": "Echo of the HTTP status code"
-    },
-    "data": {
-      "type": "object",
-      "required": false,
-      "description": "For holding any response data.",
-
-      "properties": {
-
-        "pageSize": {
-          "type": "integer",
-          "required": true,
-          "minimum": 1,
-          "maximum": 100,
-          "description": "Number of records per page"
-        },
-        "pageNo": {
-          "type": "integer",
-          "required": true,
-          "minimum": 0,
-          "description": "The page number being requested"
-
-        },
-        "totalPages": {
-          "type": "integer",
-          "required": true,
-          "minimum": 1,
-          "description": "The number of records per page"
-
-        },
-        "first": {
-          "type": "boolean",
-          "required": true,
-          "description": "Denotes whether the page of records being viewed is the first page"
-        },
-        "last": {
-          "type": "boolean",
-          "required": true,
-          "description": "Denotes whether the page of records being viewed is the last page"
-        },
-
-        "totalElements": {
-          "type": "integer",
-          "required": true,
-          "minimum": 0,
-          "description": "The total number of elements across all pages of the response"
-        },
-        "customers": {
-          "type": "array",
-          "description": "List of customer resources"
-        }
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>customer-api-raml API documentation <small>version v1</small></h1><p>https://api.samplehost.com/api/{version}</p><p>This document serves as an API specification for permitted operations on Customer resource.</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="customers" class="panel-title">Customer collection</h3></div><div class="panel-body"><div class="top-resource-description"><p>Set of APIs to manage Customer resource.</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers"><span class="parent"></span>/customers</a> <span class="methods"><a href="#customers_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#customers_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve all customers</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Create a new customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all customers</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their API clients with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_get_response" data-toggle="tab">Response</a></li><li><a href="#customers_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_get_request"><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul><h3>Query Parameters</h3><ul><li><strong>firstName</strong>: <em>(string)</em><p>First name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>John</code></pre></div></li><li><strong>lastName</strong>: <em>(string)</em><p>Last name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Smith</code></pre></div></li><li><strong>address</strong>: <em>(string)</em><p>Fuzzy search on address attributes, street name, city or postcode.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Wyong, Mountain%20Street, 2145</code></pre></div></li><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>Comma seperated list of fields to sort by with sort direction (optional). By default the server will sort in ascending order (asc). To override this, the sort order will need to be specified with a colon after the field.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>- firstName,lastName
+- firstName:desc,lastName
+- firstName,lastName:desc
+</code></pre></div></li></ul></div><div class="tab-pane" id="customers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Headers</h3><ul><li><strong>ETag</strong>: <em>required (string)</em><p>This ETag header value should be used if client wishes to make subsequent conditional GET requests.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>4499494</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "success": true,
   "status": 200,
   "data": {
@@ -306,38 +241,7 @@
   }
 }
 </code></pre></div></div><div class="tab-pane" id="customers_get_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
-</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li><li><a href="#customers_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "lastName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "address": {
-      "type": "object",
-      "required": true,
-      "properties": {
-        "addressLine1": {"type": "string", "required": true},
-        "addressLine2": {"type": "string", "required": true},
-        "city": {"type": "string", "required": true},
-        "state": {"type": "string", "required": true},
-        "postCode": {"type": "string", "required": true},
-        "country": {"type": "string", "required": true}
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/customers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their API clients with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_post_request" data-toggle="tab">Request</a></li><li><a href="#customers_post_response" data-toggle="tab">Response</a></li><li><a href="#customers_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
     "firstName": "Fraser",
     "lastName": "Brendand",
     "address": {
@@ -349,38 +253,7 @@
         "country": "Australia"
     }
 }
-</code></pre></div></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new customer</p><h3>Headers</h3><ul><li><strong>Content-Location</strong>: <em>(string)</em><p>Location of the newly created customer</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "lastName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "address": {
-      "type": "object",
-      "required": true,
-      "properties": {
-        "addressLine1": {"type": "string", "required": true},
-        "addressLine2": {"type": "string", "required": true},
-        "city": {"type": "string", "required": true},
-        "state": {"type": "string", "required": true},
-        "postCode": {"type": "string", "required": true},
-        "country": {"type": "string", "required": true}
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div><div class="tab-pane" id="customers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Succesfully created a new customer</p><h3>Headers</h3><ul><li><strong>Content-Location</strong>: <em>(string)</em><p>Location of the newly created customer</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
     "firstName": "Fraser",
     "lastName": "Brendand",
     "address": {
@@ -392,47 +265,7 @@
         "country": "Australia"
     }
 }
-</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Invalid API request submitted for creating a new customer</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "success": {
-      "type": "boolean",
-      "required": true,
-      "description": "Denotes success or erronous API response. For error response, this is always false."
-    },
-    "status": {
-      "type": "integer",
-      "required": true,
-      "description": "Echo of the HTTP status code"
-    },
-    "data": {
-      "type": "object",
-      "required": true,
-      "description": "For holding any response data.",
-
-      "properties": {
-        "error": {
-          "type": ["string", "array"],
-          "required": true,
-          "description": "Description of the error that occured. This will be a string for single error message. For multiple error messages, it will be an array of strings."
-        },
-        "request": {
-          "type": "string",
-          "required": true,
-          "description": "API request path on which the error has occured"
-        },
-        "method": {
-          "type": "string",
-          "required": true,
-          "description": "HTTP method that has been invoked"
-        }
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Invalid API request submitted for creating a new customer</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "success": false,
   "status": 400,
   "data": {
@@ -472,38 +305,7 @@
   }
 }
 </code></pre></div></div><div class="tab-pane" id="customers_post_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
-</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__patch"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__patch'" class="list-group-item"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Allow partial modification of resource &lt;&lt; resourcePathName | !singularize &gt;&gt;</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer resource</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "lastName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "address": {
-      "type": "object",
-      "required": true,
-      "properties": {
-        "addressLine1": {"type": "string", "required": true},
-        "addressLine2": {"type": "string", "required": true},
-        "city": {"type": "string", "required": true},
-        "state": {"type": "string", "required": true},
-        "postCode": {"type": "string", "required": true},
-        "country": {"type": "string", "required": true}
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers__customerid_"><span class="parent">/customers</span>/{customerId}</a> <span class="methods"><a href="#customers__customerid__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__patch"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#customers__customerid__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers__customerid_" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Operations on individual Customer resource</p></div><div class="list-group"><div onclick="window.location.href = '#customers__customerid__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Retrieve a single customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__patch'" class="list-group-item"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Allow partial modification of resource &lt;&lt; resourcePathName | !singularize &gt;&gt;</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update an existing customer</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#customers__customerid__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete an existing customer</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a single customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their API clients with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__get_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__get_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__get_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>If-None-Match</strong>: <em>(string)</em><p>Set this optional header if you wish to make a conditional request. The ETag value should be derived from the last HTTP 200 response.</p></li></ul></div><div class="tab-pane" id="customers__customerid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Returns the customer resource</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
     "firstName": "Fraser",
     "lastName": "Brendand",
     "address": {
@@ -543,43 +345,12 @@
   }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__get_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
-</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Allow partial modification of resource &lt;&lt; resourcePathName | !singularize &gt;&gt;</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__patch_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__patch_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__patch_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__patch_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>:</p><pre><code>{
+</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Allow partial modification of resource &lt;&lt; resourcePathName | !singularize &gt;&gt;</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their API clients with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__patch_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__patch_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__patch_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__patch_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>:</p><pre><code>{
     "address": {
         "postCode": "2145"
     }
 }
-</code></pre></div><div class="tab-pane" id="customers__customerid__patch_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "lastName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "address": {
-      "type": "object",
-      "required": true,
-      "properties": {
-        "addressLine1": {"type": "string", "required": true},
-        "addressLine2": {"type": "string", "required": true},
-        "city": {"type": "string", "required": true},
-        "state": {"type": "string", "required": true},
-        "postCode": {"type": "string", "required": true},
-        "country": {"type": "string", "required": true}
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div><div class="tab-pane" id="customers__customerid__patch_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer object</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
     "firstName": "Fraser",
     "lastName": "Brendand",
     "address": {
@@ -592,38 +363,7 @@
     }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__patch_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
-</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "lastName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "address": {
-      "type": "object",
-      "required": true,
-      "properties": {
-        "addressLine1": {"type": "string", "required": true},
-        "addressLine2": {"type": "string", "required": true},
-        "city": {"type": "string", "required": true},
-        "state": {"type": "string", "required": true},
-        "postCode": {"type": "string", "required": true},
-        "country": {"type": "string", "required": true}
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their API clients with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__put_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__put_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__put_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
     "firstName": "Fraser",
     "lastName": "Brendand",
     "address": {
@@ -635,38 +375,7 @@
         "country": "Australia"
     }
 }
-</code></pre></div></div><div class="tab-pane" id="customers__customerid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer resource</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "lastName": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 100
-    },
-    "address": {
-      "type": "object",
-      "required": true,
-      "properties": {
-        "addressLine1": {"type": "string", "required": true},
-        "addressLine2": {"type": "string", "required": true},
-        "city": {"type": "string", "required": true},
-        "state": {"type": "string", "required": true},
-        "postCode": {"type": "string", "required": true},
-        "country": {"type": "string", "required": true}
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></div><div class="tab-pane" id="customers__customerid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Returns the customer resource</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
     "firstName": "Fraser",
     "lastName": "Brendand",
     "address": {
@@ -706,7 +415,7 @@
   }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__put_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
-</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__delete_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__delete_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__delete_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Resource successfully deleted. No response body.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers__customerid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/{customerId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an existing customer</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their API clients with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers__customerid__delete_request" data-toggle="tab">Request</a></li><li><a href="#customers__customerid__delete_response" data-toggle="tab">Response</a></li><li><a href="#customers__customerid__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers__customerid__delete_request"><h3>URI Parameters</h3><ul><li><strong>customerId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="customers__customerid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Resource successfully deleted. No response body.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Permission denied exception</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "success": false,
   "status": 403,
   "data": {
@@ -734,107 +443,4 @@
   }
 }
 </code></pre></div></div><div class="tab-pane" id="customers__customerid__delete_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
-</code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_customers_search"><span class="parent">/customers</span>/search</a> <span class="methods"><a href="#customers_search_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_customers_search" class="panel-collapse collapse"><div class="panel-body"><div class="resource-description"><p>Search for customers in the system based on their attributes</p></div><div class="list-group"><div onclick="window.location.href = '#customers_search_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Search for customers by first name, last name or address</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="customers_search_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent">/customers</span>/search</h4></div><div class="modal-body"><div class="alert alert-info"><p>Search for customers by first name, last name or address</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>oauth_2_0</b><p>The APIs are protected by OAuth 2.0. All consumers will need to register their client (API client, mobile or any IoT devices) with the API gateway in order to obtain the client_id and client_secret.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#customers_search_get_request" data-toggle="tab">Request</a></li><li><a href="#customers_search_get_response" data-toggle="tab">Response</a></li><li><a href="#customers_search_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="customers_search_get_request"><h3>Query Parameters</h3><ul><li><strong>firstName</strong>: <em>(string)</em><p>First name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>John</code></pre></div></li><li><strong>lastName</strong>: <em>(string)</em><p>Last name of customer</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Smith</code></pre></div></li><li><strong>address</strong>: <em>(string)</em><p>Add whole or part of the address to retrieve matching customers. This could be suburb, postcode or state.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Wyong, Mountain%20Street, 2145</code></pre></div></li><li><strong>pageNo</strong>: <em>(number - default: 0)</em><p>The page number to fetch</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>pageSize</strong>: <em>(number - default: 100)</em><p>The maximum number of records to fetch per page</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li><li><strong>sortBy</strong>: <em>(string)</em><p>List of fields to sort by (comma separated). For example: #TODO: add example</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>-firstName,lastName</code></pre></div></li></ul></div><div class="tab-pane" id="customers_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Paginated list of customers that match search term</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "success": true,
-  "status": 200,
-  "data": {
-    "pageSize": 3,
-    "pageNo": 0,
-    "totalPages": 224,
-    "first": true,
-    "last": false,
-    "totalElements": 1118,
-    "customers": [
-      {
-        "customerId": 588992,
-        "firstName": "Fraser",
-        "lastName": "Brendand",
-        "address": "1 Charles Street, Westmead, NSW, 2145"
-      },
-      {
-        "customerId": 588294,
-        "firstName": "Raymond",
-        "lastName": "Johnson",
-        "address": "4/5 Dover Heights, Tarens Point, NSW, 2245"
-      },
-      {
-        "customerId": 588214,
-        "firstName": "Albert",
-        "lastName": "Steve",
-        "address": "4/5 Chestnut Place, Burwood, NSW, 2245"
-      },
-      {
-        "customerId": 182842,
-        "firstName": "Albert",
-        "lastName": "Steve",
-        "address": "1 Delhi Road, North Ryde, NSW, 2312"
-      },
-      {
-        "customerId": 18284,
-        "firstName": "Amanda",
-        "lastName": "Bell",
-        "address": "9 Mountain Street, Wyong, NSW, 2411"
-      }
-    ]
-  }
-}
-</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad search request submitted</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "required": true,
-  "properties": {
-    "success": {
-      "type": "boolean",
-      "required": true,
-      "description": "Denotes success or erronous API response. For error response, this is always false."
-    },
-    "status": {
-      "type": "integer",
-      "required": true,
-      "description": "Echo of the HTTP status code"
-    },
-    "data": {
-      "type": "object",
-      "required": true,
-      "description": "For holding any response data.",
-
-      "properties": {
-        "error": {
-          "type": ["string", "array"],
-          "required": true,
-          "description": "Description of the error that occured. This will be a string for single error message. For multiple error messages, it will be an array of strings."
-        },
-        "request": {
-          "type": "string",
-          "required": true,
-          "description": "API request path on which the error has occured"
-        },
-        "method": {
-          "type": "string",
-          "required": true,
-          "description": "HTTP method that has been invoked"
-        }
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "success": false,
-  "status": 400,
-  "data": {
-      "error": "&#39;fristname&#39; is not a valid query parameter",
-      "request": "/api/v1/customers?fristname=John",
-      "method": "GET"
-  }
-}
-</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "success": false,
-  "status": 500,
-  "data": {
-      "error": "An internal server error has occured processing your request",
-      "request": "/api/v1/customers/44981",
-      "method": "DELETE"
-  }
-}
-</code></pre></div></div><div class="tab-pane" id="customers_search_get_securedby"><h1>Secured by oauth_2_0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 access token. Do not use with the "access_token" query string parameter.</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
 </code></pre></div></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bad or expired access token.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Unauthorized - If client with access token invokes API operation that they are not allowed.</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#customers">Customer collection</a></li></ul></div></div></div></div></body></html>
