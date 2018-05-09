@@ -89,6 +89,10 @@ resourceTypes:
         }
   get:
     is: [pageable,sortable]
+    description: |
+      Retrieve all customers. When query parameters are ommited, the API calls returns all customers. Using the optional query
+      parameters, the result set could be narrowed further to the matching customers.
+
     queryParameters:
       firstName:
         required: false
@@ -100,11 +104,27 @@ resourceTypes:
         description: Last name of customer
         type: string
         example: Smith
-      address:
+      address.streetLine1:
         required: false
-        description: Fuzzy search on address attributes, street name, city or postcode.
+        description: Fuzzy search on street line 1
+        type: string
+        example: George Street
+      address.streetLine2:
+        required: false
+        description: Fuzzy search on street line 2
         type: string
         example: Wyong, Mountain%20Street, 2145
+      address.city:
+        required: false
+        description: Fuzzy search address
+        type: string
+        example: Sydney, Bellevue%20Hill, Potts%20Point
+      address.postCode:
+        required: false
+        description: Exact search by postcode
+        type: string
+        example: 2000, 214
+
 
   /{customerId}:
     displayName: Customer resource
