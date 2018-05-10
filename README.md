@@ -2,7 +2,7 @@
 
 Sample API specification developed in RAML for managing customers.
 
-The API specification is designed to satisfy the following use cases:
+The API specification is designed to meet the following use cases:
 
 1. Allowing automated API consumers (for example, cron jobs or middleware applications) invoke APIs to fetch list of customers.
 2. An end-user such as customer service representative should be able to use a mobile device to manage customers using the APIs
@@ -12,23 +12,26 @@ The API specification is designed to satisfy the following use cases:
 
 To preview the API specification in your browser, please see [here for raml2html output](https://rawgit.com/aimtiaz11/customer-api-raml/master/output/index.html).
 
+## 2. Assumptions
 
-## 2. Security considerations
+In this exercise, we will make the assumption that the API server is protected by a Authorization Server which will do the OAuth verifications.
 
-### 2.1 HTTPS
+## 3. Security considerations
+
+### 3.1 HTTPS
 
 To encrypt traffic between the API consumer and API server, HTTPS will be used in conjunction with TLS. This will prevent man-in-the-middle attacks, packet sniffing and other similar malicious attacks.
 
 Using HTTPS with TLS 1.2 is important as the APIs are internet facing (as opposed to point-to-point in a data centre or within a WAN/LAN setup). This warrants all communications to be encrypted end-to-end. TLS 1.0 is currently more widely adopted, however major API vendors are [slowly deprecating it in favour of TLS 1.2](https://www.thesslstore.com/blog/deprecation-tls-1-0-1-1-underway/).
 
 
-### 2.2 OAuth for authorization
+### 3.2 OAuth for Authorization
 
 The APIs will be protected using OAuth 2.0. OAuth 2.0 is deemed more secure than other methods such as API keys and Basic Auth as user authentication credentials are not passed around in every request. Although, a downside is that implementing OAuth is a bit more cumbersome than simple API keys or Basic Auth.
 
 We will support two variants of OAuth - two-legged (application authentication) and three-legged (user authentication) and both are intended to satisfy the use cases 1 and 2 above.
 
-#### 2.2.1 Application authentication
+#### 3.2.1 Application Authentication
 
 Application authentication (or two-legged OAuth) does not require any user context. The Authorization process involves:
 
@@ -39,27 +42,27 @@ API client will need to keep the `client_id` and `client_secret` encrypted for s
 
 This is suitable for applications or automated scripts that run at regular interval to fetch client data.
 
-#### 2.2.2 User Authentication
+#### 3.2.2 User Authentication
 
 This is the traditional OAuth scenario (three-legged scenario) where the API Client is redirect to the Authorization server to enter their credentials. Upon successful authentication, the client receives the access and refresh tokens that will be used to communicate with the API server.
 
 This is suitable for mobile or web application clients with an end-user involved.
 
 
-#### 2.2.3 The difference between User and Application Authentication
+#### 3.2.3 The difference between User and Application Authentication
 
-Clients who obtain their token via _Application Authentication_ will only have read-only access to the data. They can only invoke the safe HTTP methods.
+Clients who obtain their token via _Application Authentication_ will only have read-only access to the data. They can only invoke the safe HTTP methods such as GET which does not manipulate any resource.
 
-## 3. Consumer integration
+## 4. Consumer Integration
 
 In this section we describe how we can fulfil first two use cases.
 
-### 3.1 Automated access to the API (use case 1)
+### 4.1 Automated access to the API (use case 1)
 
 An API consumer that wish to invoke customer APIs periodically will need to register with the API service in order to obtain client ID and client secret.
 
 
-Once they have obtained that, the rest of the OAuth authrorization will follow as below:
+Once they have obtained that, the rest of the OAuth Authorization will follow as below:
 
 **Step 1:** API consumer sends a request for token by sending the `client_id` and `client_secret` obtained during registration in an `Authorization` header as Base64 encoded string.
 
@@ -70,7 +73,7 @@ Authorization: Basic Base64(client_id:client_secret)
 
 ```
 
-**Step 2:** The Authorization server will response with the token:
+**Step 2:** The Authorization server will respond with the token:
 
 ```json
 {
@@ -91,7 +94,7 @@ Authorization: Bearer 79c11a62df3d4d92c092314071941e4489c8f8e7
 > The `refresh_token` can be used to obtain a new `access_token` when that expires.
 
 
-#### 3.1.1 Request pagination
+#### 4.1.1 Request pagination
 
 Due to the high volume of data that can be retrieved by the API which can affect performance, we need to enforce pagination which will restrict the amount of data that can be fetched per API call.
 
@@ -99,22 +102,22 @@ This will help reduce load on the server as the API's consumer base scales up.
 
 This means that the API client will need to read the pagination attributes such as `pageSize`, `totalPages`, `first` and `last` to determine how many subsequent requests to make to extract the complete collection of the customer resource.
 
-#### 3.1.2 Conditional requests
+#### 4.1.2 Conditional Requests
 
 Conditional requests allow API client to validate whether their cached copy of the customer resource is valid or not. It makes use of the `ETag` and `If-None-Match` headers.
 
-API client will need to cache or store the `ETag` header value of the HTTP 200 OK Response and pass that to a subsequent `GET /api/v1/customer/{customerId}` using a `If-None-Match` header.
+API client will need to cache or store the `ETag` header value of the HTTP 200 OK Response and pass that to subsequent `GET /api/v1/customer/{customerId}` requests using a `If-None-Match` header.
 
 If the server determines that the resource has been modified based on the `If-None-Match` header value, then will respond with a HTTP 200 OK with the body containing the new Customer resource.
 
 If the resource has not been modified, the API server will respond with a HTTP 304 Not Modified with empty body.
 
-Both the pagination feature and conditional request feature prevents server and network from being overloaded by expensive API calls.
+Both the pagination feature and conditional request feature will help prevent server and network from being overloaded by expensive API calls.
 
 
-### 3.2 Mobile and IoT integration (use case 2)
+### 4.2 Mobile and IoT integration (use case 2)
 
-#### 3.2.1 Authentication process
+#### 4.2.1 Authentication Process
 
 Mobile and IoT devices should leverage the the `User Authentication` (three-legged OAuth) which will give them access to full range of APIs that the API service has to offer.
 
@@ -125,14 +128,14 @@ End-users such as a Customer Service Representative using the application, will 
 The authentication flow will be as follows:
 
 1. A customer service agent attempts to login in the mobile application.
-2. The mobile application redirect to the Authorization Server which will present a page/screen for customer service agent to enter their credentials.
-3. Customer service agent will enter the credential and upon submission, the Authorization Server will redirect back to the client application URL (Authorization grant process)
+2. The mobile application redirects end-user to the Authorization Server which will present a page/screen for customer service agent to enter their username and password.
+3. Customer service agent will enter their own login credentials and upon submission, the Authorization Server will redirect back to the client application URL (Authorization grant process)
 4. The mobile application will extract the `authorization_code` from the response and call `/oauth2/authorize` to obtain the `access_token` and `refresh_token`
 5. The Authorization server will return the `access_token` and `refresh_token` back to the mobile application.
 6. The mobile application will use `access_token` for all future interactions with the API Server.
 
 
-#### 3.2.2 Developing around the APIs
+#### 4.2.2 Developing around the APIs
 
 The API uses standard response model which look like below:
 ```
@@ -149,17 +152,17 @@ We use this object for all HTTP responses - whether its 200 OK or 400 Bad Reques
 This way, application developers can easily write cleaner client-side code as they can always expect a single standard 3 attribute response object as response.
 
 
-## 4.1 Adding other resources (use case 3)
+## 5.1 Adding other resources (use case 3)
 
 The API spec has been developed to make it easier further expand it to include other resources such as `orders` and `products`.
 
-### 4.1.2 Heavy use resource types and parameterisation
+### 5.1.2 Heavy use resource types and parameterisation
 
 In the API spec, we defined two resource type called *collectionType* and *resourceType*.
 
 *collectionType* is designed to be used on a collection (of resources). For example, `/customers` or `/accounts` or `/products`.
 
-*resourceType* is applicable to individual resource - an item in the collection of resources.
+*resourceType* is applicable to individual resource - a single item in the collection.
 
 For example, `/customers/{customerId}`, `orders/{orderId}`.
 
@@ -181,7 +184,7 @@ Note: There may be cases were we may not want to allow a certain API operation o
 In real life, we might not put a destructive operation like DELETE under resource type but rather directly on the collection or resources in the API definitions.
 
 
-#### 4.1.2.1 Example of how to expand the API
+#### 5.1.2.1 Example of how to expand the API
 
 Suppose we are adding the following new resources: `orders` and `products`. An use case around these new resources is that `customer` places `orders` and `orders` will contain number of `products`. So there is a one-to-many between `customers` and one-to-many between `orders` and `products`.
 
@@ -249,9 +252,9 @@ types:
 Therefore, by associating the API methods with the resource types, we make this easily scalable to other resources.
 
 
-# 5. Other design decisions
+# 6. Other design decisions
 
-## 5.1 Excluding hypermedia links (HATEOAS)
+## 6.1 Excluding hypermedia links (HATEOAS)
 
 Strict adherence to REST standards mandates having hypermedia links and in the community there are strong proponents both for and against having hypermedia links in the response body.
 
