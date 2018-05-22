@@ -4,7 +4,7 @@ get:
   description: Retrieve a single <<resourcePathName | !singularize>>
   responses:
     200:
-      description: Returns the <<resourcePathName | !singularize>> resource
+      description: Return the <<resourcePathName | !singularize>> resource
       body:
         application/json:
           example: <<getSingleResourceExample>>
@@ -20,7 +20,7 @@ put:
       type: <<updateResourceRequestType>>
   responses:
     204:
-      description: Returns the <<resourcePathName | !singularize>> resource
+      description: Return the updated <<resourcePathName | !singularize>> resource
       body:
         application/json:
           example: <<updateResourceResponseExample>>
