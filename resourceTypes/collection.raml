@@ -4,13 +4,17 @@ description: A collection of <<resourcePathName>> in the system. Due to the high
 get:
   is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
   description: Retrieve all <<resourcePathName | !pluralize>>
+  headers:
+    If-Modified-Since:
+      description: Timestamp when the collection was last modified.
+      required: false
   responses:
     200:
       description: Success response.
       headers:
-        ETag:
-          description: This ETag header value should be used if client wishes to make subsequent conditional GET requests.
-          example: "4499494"
+        Last-Modified:
+          description: The date this collection was last modified (resource added, removed or updated)
+          example: "Wed, 15 Jun 2018 15:00:00"
           required: true
       body:
         application/json:

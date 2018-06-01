@@ -104,7 +104,9 @@ This means that the API client will need to read the pagination attributes such 
 
 #### 4.1.2 Conditional Requests
 
-Conditional requests allow API client to validate whether their cached copy of the customer resource is valid or not. It makes use of the `ETag` and `If-None-Match` headers.
+Conditional requests allow API client to validate whether their cached copy of the customer resource or collection is valid or not. It makes use of the `ETag`/`If-None-Match` headers for single resource and `Last-Modified`/`If-Modified-Since` for collections.
+
+### 4.1.2.2 Conditional Request for resource
 
 API client will need to cache or store the `ETag` header value of the HTTP 200 OK Response and pass that to subsequent `GET /api/v1/customer/{customerId}` requests using a `If-None-Match` header.
 
@@ -112,7 +114,17 @@ If the server determines that the resource has been modified based on the `If-No
 
 If the resource has not been modified, the API server will respond with a HTTP 304 Not Modified with empty body.
 
-Both the pagination feature and conditional request feature will help prevent server and network from being overloaded by expensive API calls.
+### 4.1.2.2 Conditional Request for collection
+
+When automated API consumers will try to consume the API, they will need to perform an initial load
+of the full customer dataset. This will need to happen by iterating through all the pages of customer result set in one iteration.
+
+In second iteration, the API consumer will only want records that have been updated. So after the initial data load, the API consumer will need to pass the `If-Modified-Since` with the value since the last time the API call was made. This will return those customer resources that have been updated since the last API call.
+
+
+
+
+Both the pagination feature and conditional request feature will help prevent server and network from being overloaded by expensive API calls and allow the automated API client to make fewer API calls to fetch full result set.
 
 
 ### 4.2 Mobile and IoT integration (use case 2)
