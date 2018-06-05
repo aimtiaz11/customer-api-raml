@@ -102,29 +102,15 @@ This will help reduce load on the server as the API's consumer base scales up.
 
 This means that the API client will need to read the pagination attributes such as `pageSize`, `totalPages`, `first` and `last` to determine how many subsequent requests to make to extract the complete collection of the customer resource.
 
-#### 4.1.2 Conditional Requests
-
-Conditional requests allow API client to validate whether their cached copy of the customer resource or collection is valid or not. It makes use of the `ETag`/`If-None-Match` headers for single resource and `Last-Modified`/`If-Modified-Since` for collections.
-
-### 4.1.2.2 Conditional Request for resource
-
-API client will need to cache or store the `ETag` header value of the HTTP 200 OK Response and pass that to subsequent `GET /api/v1/customer/{customerId}` requests using a `If-None-Match` header.
-
-If the server determines that the resource has been modified based on the `If-None-Match` header value, then will respond with a HTTP 200 OK with the body containing the new Customer resource.
-
-If the resource has not been modified, the API server will respond with a HTTP 304 Not Modified with empty body.
-
-### 4.1.2.2 Conditional Request for collection
-
-When automated API consumers will try to consume the API, they will need to perform an initial load
-of the full customer dataset. This will need to happen by iterating through all the pages of customer result set in one iteration.
-
-In second iteration, the API consumer will only want records that have been updated. So after the initial data load, the API consumer will need to pass the `If-Modified-Since` with the value since the last time the API call was made. This will return those customer resources that have been updated since the last API call.
 
 
+#### 4.1.2 Automated API calls to retrieve all customer
 
+When automated API consumers will try to consume the API to fetch all customers, they will need to first perform an initial load of the full customer dataset. This will need to happen by iterating through all the pages of customer result set in one iteration. The API client will need to note the start timestamp of the first API call.
 
-Both the pagination feature and conditional request feature will help prevent server and network from being overloaded by expensive API calls and allow the automated API client to make fewer API calls to fetch full result set.
+In all subsequent API calls (scheduled at regular interval or otherwise), the API consumer will only want records that have been updated since the last time the entire list was loaded. So after the initial data load, the API consumer will need to pass the `lastUpdated` query parameter with the value since the last time the API call was made. This will return those customer resources that have been updated since the last time API call was made.
+
+The ability to restrict result sets of collections by `lastUpdated` and pagination features allow us to prevent network and server overload by expensive API calls to retrieve collections.
 
 
 ### 4.2 Mobile and IoT integration (use case 2)
@@ -168,7 +154,7 @@ This way, application developers can easily write cleaner client-side code as th
 
 The API spec has been developed to make it easier further expand it to include other resources such as `orders` and `products`.
 
-### 5.1.2 Heavy use resource types and parameterisation
+#### 5.1.2 Heavy use resource types and parameterisation
 
 In the API spec, we defined two resource type called *collectionType* and *resourceType*.
 
@@ -196,7 +182,7 @@ Note: There may be cases were we may not want to allow a certain API operation o
 In real life, we might not put a destructive operation like DELETE under resource type but rather directly on the collection or resources in the API definitions.
 
 
-#### 5.1.2.1 Example of how to expand the API
+##### 5.1.2.1 Example of how to expand the API
 
 Suppose we are adding the following new resources: `orders` and `products`. An use case around these new resources is that `customer` places `orders` and `orders` will contain number of `products`. So there is a one-to-many between `customers` and one-to-many between `orders` and `products`.
 
@@ -264,10 +250,20 @@ types:
 Therefore, by associating the API methods with the resource types, we make this easily scalable to other resources.
 
 
-# 6. Other design decisions
+## 6. Other design decisions
 
-## 6.1 Excluding hypermedia links (HATEOAS)
+### 6.1 Excluding hypermedia links (HATEOAS)
 
 Strict adherence to REST standards mandates having hypermedia links and in the community there are strong proponents both for and against having hypermedia links in the response body.
 
 I have deliberately left out hypermedia links, as they do not really serve any purpose as far as the use cases are concerned. On the other hand, they make API response more bloated.
+
+### 6.2 Conditional Requests
+
+Conditional requests allow API client to validate whether their cached copy of the customer resource or collection is valid or not. It makes use of the `ETag`/`If-None-Match` headers for single resource API calls.
+
+### 6.3 Conditional Request for resource
+
+API client will need to cache or store the `ETag` header value of the HTTP 200 OK Response and pass that to subsequent `GET /api/v1/customer/{customerId}` requests using a `If-None-Match` header.
+
+If the resource has not been modified, the API server will respond with a HTTP 204 Not Modified with empty body which means API client can use their cached copy.

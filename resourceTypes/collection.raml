@@ -4,18 +4,15 @@ description: A collection of <<resourcePathName>> in the system. Due to the high
 get:
   is: [throwsForbiddenError,throwsResourceNotFoundError,throwsInternalServerError]
   description: Retrieve all <<resourcePathName | !pluralize>>
-  headers:
-    If-Modified-Since:
-      description: Timestamp when the collection was last modified.
+  queryParameters:
+    lastUpdated:
       required: false
+      description: Only fetch <<resourcePathName | !pluralize>> items that were last updated since this timestamp
+      type: string
+      example: 2017-12-03T10:15:30+11:00
   responses:
     200:
-      description: Success response.
-      headers:
-        Last-Modified:
-          description: The date this collection was last modified (resource added, removed or updated)
-          example: "Wed, 15 Jun 2018 15:00:00"
-          required: true
+      description: A paginated list of <<resourcePathName | !pluralize>>
       body:
         application/json:
           example: <<examplePaginatedResponseExample>>
