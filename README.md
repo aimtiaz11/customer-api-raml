@@ -110,7 +110,7 @@ When automated API consumers will try to consume the API to fetch all customers,
 
 In all subsequent API calls (scheduled at regular interval or otherwise), the API consumer will only want records that have been updated since the last time the entire list was loaded. So after the initial data load, the API consumer will need to pass the `lastUpdated` query parameter with the value since the last time the API call was made. This will return those customer resources that have been updated since the last time API call was made.
 
-The ability to restrict result sets of collections by `lastUpdated` and pagination features allow us to prevent network and server overload by expensive API calls to retrieve collections.
+The ability to restrict result sets of collections by using `lastUpdated` query parameter and pagination features allow us to prevent network and server overload by expensive API calls to retrieve collections.
 
 
 ### 4.2 Mobile and IoT integration (use case 2)
