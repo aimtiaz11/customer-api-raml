@@ -14,7 +14,7 @@ To preview the API specification in your browser, please see [here for raml2html
 
 ## 2. Assumptions
 
-In this exercise, we will make the assumption that the API server is protected by a Authorization Server which will do the OAuth verifications.
+In this exercise, we will make the assumption that the API server is protected by an Authorization Server which will do the OAuth verifications.
 
 ## 3. Security considerations
 
