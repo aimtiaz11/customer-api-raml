@@ -117,7 +117,7 @@ The ability to restrict result sets of collections by using `lastUpdated` query 
 
 #### 4.2.1 Authentication Process
 
-Mobile and IoT devices should leverage the the `User Authentication` (three-legged OAuth) which will give them access to full range of APIs that the API service has to offer.
+Mobile and IoT devices should leverage the `User Authentication` (three-legged OAuth) which will give them access to full range of APIs that the API service has to offer.
 
 All mobile applications will need a `client_id` and `client_secret` which they will obtain after registering their mobile device or application with the API service.
 
